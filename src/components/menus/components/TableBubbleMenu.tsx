@@ -1,22 +1,71 @@
+import { useCallback } from 'react';
+
 import type { Editor } from '@tiptap/core';
 import { isActive } from '@tiptap/core';
+import { TextSelection } from '@tiptap/pm/state';
 import { BubbleMenu } from '@tiptap/react';
 import type { GetReferenceClientRect } from 'tippy.js';
 import { sticky } from 'tippy.js';
 
 import { ActionButton, type ActionButtonProps, Separator } from '@/components';
 import HighlightActionButton from '@/extensions/Highlight/components/HighlightActionButton';
+import {
+  type ShouldShowProps,
+  isColumnGripSelected,
+  isRowGripSelected,
+} from '@/extensions/Table/utils';
 import { useLocale } from '@/locales';
 
 export interface TableBubbleMenuProps {
-  editor: Editor
-  disabled?: boolean
-  actions?: ActionButtonProps[]
+  editor: Editor;
+  disabled?: boolean;
+  actions?: ActionButtonProps[];
 }
 
 function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
-  const shouldShow = ({ editor }: { editor: Editor }) => {
+  const shouldColumnGripShow = useCallback(
+    ({ view, state, from }: ShouldShowProps) => {
+      if (!state) {
+        return false;
+      }
+
+      return isColumnGripSelected({ editor, view, state, from: from || 0 });
+    },
+    [editor]
+  );
+
+  const shouldRowGripShow = useCallback(
+    ({ view, state, from }: ShouldShowProps) => {
+      if (!state || !from) {
+        return false;
+      }
+
+      return isRowGripSelected({ editor, view, state, from });
+    },
+    [editor]
+  );
+
+  const shouldSelectionShow = ({ editor }: any) => {
+    const { selection } = editor.view.state;
+    const { $from, to } = selection;
+
+    // check content select length is not empty
+    if ($from.pos === to) {
+      return false;
+    }
+
+    return selection instanceof TextSelection;
+  };
+
+  const shouldActiveShow = ({ editor }: { editor: Editor }) => {
     return isActive(editor.view.state, 'table');
+  };
+  const shouldShow = (showProps: ShouldShowProps) => {
+    return (
+      shouldActiveShow(showProps) ||
+      shouldColumnGripShow(showProps) ||
+      shouldRowGripShow(showProps)
+    ) && !shouldSelectionShow(showProps);
   };
   const { t } = useLocale();
 

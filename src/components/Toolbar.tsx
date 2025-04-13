@@ -68,7 +68,7 @@ function Toolbar({ editor, disabled, toolbar }: ToolbarComponentProps) {
   const containerDom = (innerContent: React.ReactNode) => {
     return (
       <div
-        className="richtext-px-1 richtext-py-2 !richtext-border-b"
+        className="richtext-toolbar richtext-px-1 richtext-py-2 !richtext-border-b"
         style={{
           pointerEvents: disabled ? 'none' : 'auto',
           opacity: disabled ? 0.5 : 1,

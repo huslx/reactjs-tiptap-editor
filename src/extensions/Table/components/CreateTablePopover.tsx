@@ -120,7 +120,6 @@ function CreateTablePopover(props: IPropsCreateTablePopover) {
 
           <div className="richtext-mt-2 richtext-text-center richtext-text-sm richtext-text-zinc-600">
             {selectedTableGridSize.rows}
-            {' '}
             x
             {selectedTableGridSize.cols}
           </div>

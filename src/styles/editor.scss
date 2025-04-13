@@ -23,13 +23,29 @@
     }
 
     .tableWrapper {
-      margin: 1em 0;
-      @apply richtext-overflow-x-auto;
-
+      @apply richtext-my-12;
       table {
-        overflow: hidden;
-        display: table;
-        width: 100%;
+        box-sizing: border-box;
+        @apply richtext-box-border richtext-w-full richtext-border-collapse richtext-rounded richtext-border-black/10;
+        @apply dark:richtext-border-white/20;
+        overflow: visible;
+        td,
+        th {
+          @apply richtext-relative richtext-min-w-[100px] richtext-border richtext-border-black/10 richtext-p-2 richtext-text-left richtext-align-top;
+          @apply dark:richtext-border-white/20;
+
+          &:first-of-type:not(a) {
+            @apply richtext-mt-0;
+          }
+
+          p {
+            @apply richtext-m-0;
+
+            & + p {
+              @apply richtext-mt-3;
+            }
+          }
+        }
 
         .column-resize-handle {
           @apply richtext-bottom-[-2px] richtext-absolute richtext-right-[-2px] richtext-top-0 richtext-w-1 richtext-z-10 richtext-pointer-events-none richtext-bg-primary;
@@ -41,6 +57,90 @@
         .selectedCell {
           @apply richtext-bg-black/5 richtext-border-black/20 richtext-border-double;
           @apply dark:richtext-bg-white/10 dark:richtext-border-white/20;
+        }
+        .grip-column,
+        .grip-row {
+          @apply richtext-absolute richtext-z-10 richtext-flex richtext-cursor-pointer richtext-items-center richtext-justify-center richtext-bg-black/5;
+          @apply dark:richtext-bg-white/10;
+        }
+
+        .grip-column {
+          @apply -richtext-top-3 richtext-left-0 -richtext-ml-[1px] richtext-h-3 richtext-w-[calc(100%+1px)] richtext-border-l richtext-border-black/20;
+          @apply dark:richtext-border-white/20;
+
+          &:hover,
+          &.selected {
+            &::before {
+              content: '';
+              @apply richtext-w-2.5;
+            }
+          }
+
+          &:hover {
+            @apply richtext-bg-black/10;
+            @apply dark:richtext-bg-white/20;
+
+            &::before {
+              @apply richtext-border-b-2 richtext-border-dotted richtext-border-black/60;
+              @apply dark:richtext-border-white/60;
+            }
+          }
+
+          &.first {
+            @apply richtext-rounded-tl-sm richtext-border-transparent;
+          }
+
+          &.last {
+            @apply richtext-rounded-tr-sm;
+          }
+
+          &.selected {
+            @apply richtext-border-black/30 richtext-bg-black/30 richtext-shadow-sm;
+            @apply dark:richtext-border-white/30 dark:richtext-bg-white/30;
+
+            &::before {
+              @apply richtext-border-b-2 richtext-border-dotted;
+            }
+          }
+        }
+
+        .grip-row {
+          @apply -richtext-left-3 richtext-top-0 -richtext-mt-[1px] richtext-h-[calc(100%+1px)] richtext-w-3 richtext-border-t richtext-border-black/20;
+          @apply dark:richtext-border-white/20;
+
+          &:hover,
+          &.selected {
+            &::before {
+              @apply richtext-h-2.5;
+              content: '';
+            }
+          }
+          &:hover {
+            @apply richtext-bg-black/10;
+            @apply dark:richtext-bg-white/20;
+
+            &::before {
+              @apply richtext-border-l-2 richtext-border-dotted richtext-border-black/60;
+              @apply dark:richtext-border-white/60;
+            }
+          }
+
+          &.first {
+            @apply richtext-rounded-tl-sm richtext-border-transparent;
+          }
+
+          &.last {
+            @apply richtext-rounded-bl-sm;
+          }
+
+          &.selected {
+            @apply richtext-border-black/30 richtext-bg-black/30 richtext-shadow-sm;
+            @apply dark:richtext-border-white/30 dark:richtext-bg-white/30;
+
+            &::before {
+              @apply richtext-border-l-2 richtext-border-dotted;
+            }
+          }
         }
       }
     }
@@ -180,8 +280,6 @@
       }
     }
 
-
-
     .image-resizer {
       position: absolute;
       top: 0;
@@ -191,7 +289,6 @@
       height: 100%;
       @apply richtext-border !important;
       @apply richtext-border-border !important;
-
 
       &__handler {
         position: absolute;
@@ -246,7 +343,6 @@
   .ProseMirror[contenteditable='true'].resize-cursor {
     cursor: col-resize;
   }
-
 }
 
 .slash-command-active.slash-command-active {
