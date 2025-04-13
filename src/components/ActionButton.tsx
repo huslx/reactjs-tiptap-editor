@@ -5,7 +5,7 @@ import React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import type { TooltipContentProps } from '@radix-ui/react-tooltip';
 
-import { Toggle, Tooltip, TooltipContent, TooltipTrigger, icons } from '@/components';
+import { Toggle, Tooltip, TooltipContent, TooltipTrigger, IconComponent as Icon } from '@/components';
 import { cn } from '@/lib/utils';
 import type { ButtonViewReturnComponentProps } from '@/types';
 import { getShortcutKeys } from '@/utils/plateform';
@@ -60,8 +60,6 @@ const ActionButton = React.forwardRef<HTMLButtonElement, Partial<ActionButtonPro
       upload = false,
       ...rest
     } = props;
-
-    const Icon = icons[icon as string];
     const Comp = asChild ? Slot : Toggle;
 
     return (
@@ -77,7 +75,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, Partial<ActionButtonPro
             disabled={disabled}
             {...(rest as Omit<typeof rest, 'loading'>)}
           >
-            {Icon && <Icon className="richtext-size-4" />}
+            {icon && <Icon name={icon} className="richtext-size-4" />}
             {children}
           </Comp>
         </TooltipTrigger>
