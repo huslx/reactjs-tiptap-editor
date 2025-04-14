@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-tiptap-editor",
+  "name": "reactjs-tiptap-editor-pro",
   "type": "module",
-  "version": "0.2.25",
+  "version": "0.2.27",
   "packageManager": "pnpm@8.15.9",
   "description": "A modern WYSIWYG rich text editor based on tiptap and shadcn ui for React",
   "license": "MIT",
