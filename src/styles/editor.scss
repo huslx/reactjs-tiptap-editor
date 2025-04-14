@@ -23,12 +23,10 @@
     }
 
     .tableWrapper {
-      @apply my-12;
+      @apply my-12 flex flex-col overflow-auto p-3;
       table {
-        box-sizing: border-box;
-        @apply box-border w-full border-collapse rounded border-black/10;
+        @apply flex-1 box-border w-full border-collapse rounded border-black/10;
         @apply dark:border-white/20;
-        overflow: visible;
         td,
         th {
           @apply relative min-w-[100px] border border-black/10 p-2 text-left align-top;
