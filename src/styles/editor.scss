@@ -29,7 +29,7 @@
         @apply dark:border-white/20;
         td,
         th {
-          @apply relative min-w-[100px] border border-black/10 p-2 text-left align-top;
+          @apply relative border border-black/10 p-2 text-left align-top;
           @apply dark:border-white/20;
 
           &:first-of-type:not(a) {
