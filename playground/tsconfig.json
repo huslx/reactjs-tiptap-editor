@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "reactjs-tiptap-editor": ["reactjs-tiptap-editor-pro"]
     }
   },
   "include": ["src"]

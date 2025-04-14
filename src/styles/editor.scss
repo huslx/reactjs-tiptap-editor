@@ -23,9 +23,9 @@
     }
 
     .tableWrapper {
-      @apply my-12 flex flex-col overflow-auto p-3;
+      @apply my-12 overflow-auto p-3;
       table {
-        @apply flex-1 box-border w-full border-collapse rounded border-black/10;
+        @apply box-border w-full border-collapse rounded border-black/10;
         @apply dark:border-white/20;
         td,
         th {

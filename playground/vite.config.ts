@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: isAnalyze,
     },
     resolve: {
-      alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+      alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }, { find: 'reactjs-tiptap-editor', replacement: 'reactjs-tiptap-editor-pro'}],
     },
     esbuild: {
       sourcemap: isDev,
