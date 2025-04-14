@@ -10,6 +10,7 @@ import { useLocale } from '@/locales';
 export interface BubbleMenuTextProps {
   editor: Editor
   disabled?: boolean
+  items?: string[]
 }
 
 const tippyOptions = {
@@ -55,9 +56,9 @@ function BubbleMenuText(props: BubbleMenuTextProps) {
       return [];
     }
 
-    return getBubbleText(props.editor, t);
+    return getBubbleText(props.editor, t, props.items);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.disabled, props.editor, lang, t]);
+  }, [props.disabled, props.editor, props.items, lang, t]);
 
   return (
     <BubbleMenu editor={props?.editor}

@@ -76,6 +76,7 @@ export function BubbleMenu({ editor, disabled, bubbleMenu }: BubbleMenuComponent
     /> : null,
     !bubbleMenu?.textConfig?.hidden ? <BubbleMenuText disabled={disabled}
       editor={editor}
+      items={bubbleMenu?.textConfig?.items}
       key="text"
     /> : null,
     extensionsNames.includes('drawer') && !bubbleMenu?.drawerConfig?.hidden ? <BubbleMenuDrawer disabled={disabled}

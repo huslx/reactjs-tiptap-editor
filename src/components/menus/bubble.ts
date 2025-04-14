@@ -375,8 +375,8 @@ export function getBubbleVideo(editor: Editor): BubbleMenuItem[] {
 /**
  * Bubble menu text list
  */
-export function getBubbleText(editor: Editor, t: any) {
-  return BUBBLE_TEXT_LIST.reduce((acc, type) => {
+export function getBubbleText(editor: Editor, t: any, list: string[] = BUBBLE_TEXT_LIST) {
+  return list.reduce((acc, type) => {
     if (type === 'divider' && acc.length > 0) {
       return [...acc, {
         type: 'divider',

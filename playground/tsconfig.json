@@ -19,7 +19,8 @@
     "types": ["node"],
     "paths": {
       "@/*": ["./src/*"],
-      "reactjs-tiptap-editor": ["reactjs-tiptap-editor-pro"]
+      "reactjs-tiptap-editor": [".."],
+      "reactjs-tiptap-editor/*": ["../lib/*"]
     }
   },
   "include": ["src"]

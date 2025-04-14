@@ -163,6 +163,7 @@ export interface BubbleMenuProps {
      * @default false
      */
     hidden?: boolean
+    items?: string[]
   }
   imageConfig?: {
     /**

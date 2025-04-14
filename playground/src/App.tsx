@@ -253,6 +253,11 @@ function App() {
         extensions={extensions}
         dark={theme === 'dark'}
         disabled={disable}
+        bubbleMenu={{
+          textConfig: {
+            items: ['bold', 'fontSize']
+          }
+        }}
       />
 
       {typeof content === 'string' && (
