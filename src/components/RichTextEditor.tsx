@@ -179,7 +179,7 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
         <TooltipProvider delayDuration={0}
           disableHoverableContent
         >
-          <div className="overflow-hidden rounded-[0.5rem] bg-background shadow outline outline-1">
+          <div className="overflow-hidden rounded-[0.5rem] bg-background">
             <div className="flex max-h-full w-full flex-col">
               {!props?.hideToolbar && <Toolbar disabled={!!props?.disabled}
                 editor={editor}

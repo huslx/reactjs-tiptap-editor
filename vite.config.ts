@@ -72,7 +72,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           assetFileNames: (assetInfo) => {
-            if (assetInfo.name == "reactjs-tiptap-editor.css") return "style.css";
+            if (assetInfo.name == "reactjs-tiptap-editor-pro.css") return "style.css";
             return assetInfo.name;
           },
           manualChunks(id) {
