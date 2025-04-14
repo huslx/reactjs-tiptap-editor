@@ -34,18 +34,18 @@ function FormEditLinkTwitter(props: IPropsFormEditLinkTwitter) {
   }
 
   return (
-    <div className="border-neutral-200 richtext-rounded-lg !richtext-border richtext-bg-white richtext-p-2 richtext-shadow-sm dark:richtext-border-neutral-800 dark:richtext-bg-black">
-      <form className="richtext-flex richtext-flex-col richtext-gap-2"
+    <div className="border-neutral-200 rounded-lg !border bg-white p-2 shadow-sm dark:border-neutral-800 dark:bg-black">
+      <form className="flex flex-col gap-2"
         onSubmit={handleSubmit}
       >
         <Label className="mb-[6px]">
           {t('editor.link.dialog.text')}
         </Label>
 
-        <div className="richtext-mb-[10px] richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-          <div className="richtext-relative richtext-w-full richtext-max-w-sm richtext-items-center">
+        <div className="mb-[10px] flex w-full max-w-sm items-center gap-1.5">
+          <div className="relative w-full max-w-sm items-center">
             <Input
-              className="richtext-w-80"
+              className="w-80"
               onChange={e => setSrc(e.target.value)}
               placeholder="Text"
               required
@@ -55,7 +55,7 @@ function FormEditLinkTwitter(props: IPropsFormEditLinkTwitter) {
           </div>
         </div>
 
-        <Button className="richtext-mt-2 richtext-self-end"
+        <Button className="mt-2 self-end"
           type="submit"
         >
           {t('editor.link.dialog.button.apply')}

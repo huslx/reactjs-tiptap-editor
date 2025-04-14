@@ -198,14 +198,14 @@ export const DrawerActiveButton: React.FC<IProps> = ({ editor, upload }) => {
         />
       </DialogTrigger>
 
-      <DialogContent className="richtext-z-[99999] !richtext-max-w-[1300px]">
+      <DialogContent className="z-[99999] !max-w-[1300px]">
         <DialogTitle>
           Drawer
         </DialogTitle>
 
         <div style={{ height: '600px', width: '100%', borderWidth: 1, background: 'white', position: 'relative' }}>
           <div
-            className='richtext-size-full'
+            className='size-full'
             id='easydrawer'
           >
           </div>

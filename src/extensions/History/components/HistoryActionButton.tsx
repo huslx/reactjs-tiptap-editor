@@ -44,12 +44,12 @@ function HistoryActionButton(props?: Partial<IPropsHistoryActionButton>) {
       <TooltipTrigger asChild>
         <Toggle
           size="sm"
-          className={`richtext-w-[32px] richtext-h-[32px] ${customClass}`}
+          className={`w-[32px] h-[32px] ${customClass}`}
           disabled={isActive?.()}
           onClick={action}
           // data-state={isActive?.() ? 'on' : 'off'}
         >
-          {Icon && <Icon className="richtext-w-4 richtext-h-4" />}
+          {Icon && <Icon className="w-4 h-4" />}
           {children && <>
             {children}
           </>}
@@ -57,7 +57,7 @@ function HistoryActionButton(props?: Partial<IPropsHistoryActionButton>) {
       </TooltipTrigger>
       {tooltip && (
         <TooltipContent {...tooltipOptions}>
-          <div className="richtext-flex richtext-flex-col richtext-items-center richtext-text-center richtext-max-w-24">
+          <div className="flex flex-col items-center text-center max-w-24">
             <div>
               {tooltip}
             </div>

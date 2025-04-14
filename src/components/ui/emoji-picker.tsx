@@ -18,7 +18,7 @@ function EmojiPicker({
   return (
     <EmojiPickerPrimitive.Root
       className={cn(
-        'richtext-bg-popover richtext-text-popover-foreground richtext-isolate richtext-flex richtext-h-full richtext-w-fit richtext-flex-col richtext-overflow-hidden richtext-rounded-md',
+        'bg-popover text-popover-foreground isolate flex h-full w-fit flex-col overflow-hidden rounded-md',
         className
       )}
       data-slot="emoji-picker"
@@ -33,12 +33,12 @@ function EmojiPickerSearch({
 }: React.ComponentProps<typeof EmojiPickerPrimitive.Search>) {
   return (
     <div
-      className={cn('richtext-flex richtext-h-9 richtext-items-center richtext-gap-2 richtext-border-b richtext-px-3', className)}
+      className={cn('flex h-9 items-center gap-2 border-b px-3', className)}
       data-slot="emoji-picker-search-wrapper"
     >
-      <SearchIcon className="richtext-size-4 richtext-shrink-0 richtext-opacity-50" />
+      <SearchIcon className="size-4 shrink-0 opacity-50" />
       <EmojiPickerPrimitive.Search
-        className="richtext-outline-hidden placeholder:richtext-text-muted-foreground richtext-flex richtext-h-10 richtext-w-full richtext-rounded-md richtext-bg-transparent richtext-py-3 richtext-text-sm disabled:richtext-cursor-not-allowed disabled:richtext-opacity-50"
+        className="outline-hidden placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
         data-slot="emoji-picker-search"
         {...props}
       />
@@ -48,7 +48,7 @@ function EmojiPickerSearch({
 
 function EmojiPickerRow({ children, ...props }: EmojiPickerListRowProps) {
   return (
-    <div {...props} className="richtext-scroll-my-1 richtext-px-1" data-slot="emoji-picker-row">
+    <div {...props} className="scroll-my-1 px-1" data-slot="emoji-picker-row">
       {children}
     </div>
   );
@@ -63,7 +63,7 @@ function EmojiPickerEmoji({
     <button
       {...props}
       className={cn(
-        'data-[active]:richtext-bg-accent richtext-flex richtext-size-7 richtext-items-center richtext-justify-center richtext-rounded-sm richtext-text-base',
+        'data-[active]:bg-accent flex size-7 items-center justify-center rounded-sm text-base',
         className
       )}
       data-slot="emoji-picker-emoji"
@@ -80,7 +80,7 @@ function EmojiPickerCategoryHeader({
   return (
     <div
       {...props}
-      className="richtext-bg-popover richtext-text-muted-foreground richtext-px-3 richtext-pb-2 richtext-pt-3.5 richtext-text-xs richtext-leading-none"
+      className="bg-popover text-muted-foreground px-3 pb-2 pt-3.5 text-xs leading-none"
       data-slot="emoji-picker-category-header"
     >
       {category.label}
@@ -94,24 +94,24 @@ function EmojiPickerContent({
 }: React.ComponentProps<typeof EmojiPickerPrimitive.Viewport>) {
   return (
     <EmojiPickerPrimitive.Viewport
-      className={cn('richtext-outline-hidden richtext-relative richtext-flex-1', className)}
+      className={cn('outline-hidden relative flex-1', className)}
       data-slot="emoji-picker-viewport"
       {...props}
     >
       <EmojiPickerPrimitive.Loading
-        className="richtext-absolute richtext-inset-0 richtext-flex richtext-items-center richtext-justify-center richtext-text-muted-foreground"
+        className="absolute inset-0 flex items-center justify-center text-muted-foreground"
         data-slot="emoji-picker-loading"
       >
-        <LoaderIcon className="richtext-size-4 richtext-animate-spin" />
+        <LoaderIcon className="size-4 animate-spin" />
       </EmojiPickerPrimitive.Loading>
       <EmojiPickerPrimitive.Empty
-        className="richtext-absolute richtext-inset-0 richtext-flex richtext-items-center richtext-justify-center richtext-text-muted-foreground richtext-text-sm"
+        className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm"
         data-slot="emoji-picker-empty"
       >
         No emoji found.
       </EmojiPickerPrimitive.Empty>
       <EmojiPickerPrimitive.List
-        className="richtext-select-none richtext-pb-1"
+        className="select-none pb-1"
         components={{
           Row: EmojiPickerRow,
           Emoji: EmojiPickerEmoji,
@@ -130,7 +130,7 @@ function EmojiPickerFooter({
   return (
     <div
       className={cn(
-        'richtext-max-w-(--frimousse-viewport-width) richtext-flex richtext-w-full richtext-min-w-0 richtext-items-center richtext-gap-1 richtext-border-t richtext-p-2',
+        'max-w-(--frimousse-viewport-width) flex w-full min-w-0 items-center gap-1 border-t p-2',
         className
       )}
       data-slot="emoji-picker-footer"
@@ -140,15 +140,15 @@ function EmojiPickerFooter({
         {({ emoji }) =>
           emoji ? (
             <>
-              <div className="richtext-flex richtext-size-7 richtext-flex-none richtext-items-center richtext-justify-center richtext-text-lg">
+              <div className="flex size-7 flex-none items-center justify-center text-lg">
                 {emoji.emoji}
               </div>
-              <span className="richtext-text-secondary-foreground richtext-truncate richtext-text-xs">
+              <span className="text-secondary-foreground truncate text-xs">
                 {emoji.label}
               </span>
             </>
           ) : (
-            <span className="richtext-text-muted-foreground richtext-ml-1.5 richtext-flex richtext-h-7 richtext-items-center richtext-truncate richtext-text-xs">
+            <span className="text-muted-foreground ml-1.5 flex h-7 items-center truncate text-xs">
               Select an emoji…
             </span>
           )

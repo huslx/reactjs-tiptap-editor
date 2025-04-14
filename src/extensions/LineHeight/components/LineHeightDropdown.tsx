@@ -62,18 +62,18 @@ function LineHeightDropdown(props: IPropsLineHeightDropdown) {
         disabled={props?.disabled}
       >
         <ActionButton
-          customClass="!richtext-w-12 richtext-h-12"
+          customClass="!w-12 h-12"
           disabled={props?.disabled}
           icon="LineHeight"
           tooltip={props?.tooltip}
         >
-          <IconComponent className="richtext-ml-1 richtext-size-3 richtext-text-zinc-500"
+          <IconComponent className="ml-1 size-3 text-zinc-500"
             name="MenuDown"
           />
         </ActionButton>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="richtext-min-w-24">
+      <DropdownMenuContent className="min-w-24">
         {LineHeights?.map((item: any, index: any) => {
           return (
             <DropdownMenuCheckboxItem

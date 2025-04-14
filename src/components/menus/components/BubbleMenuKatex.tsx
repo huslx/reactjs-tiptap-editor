@@ -84,7 +84,7 @@ function BubbleMenuKatex({ editor, ...props }: any) {
           <></>
         )
         : (
-          <div className="richtext-p-2 richtext-bg-white !richtext-border richtext-rounded-lg richtext-shadow-sm dark:richtext-bg-black richtext-border-neutral-200 dark:richtext-border-neutral-800">
+          <div className="p-2 bg-white !border rounded-lg shadow-sm dark:bg-black border-neutral-200 dark:border-neutral-800">
             {visible
               ? (
                 <>
@@ -99,13 +99,13 @@ function BubbleMenuKatex({ editor, ...props }: any) {
                   />
 
                   {previewContent && (
-                    <div className="richtext-my-[10px] richtext-p-[10px] richtext-rounded-[6px] !richtext-border-[1px] richtext-whitespace-nowrap richtext-overflow-auto">
+                    <div className="my-[10px] p-[10px] rounded-[6px] !border-[1px] whitespace-nowrap overflow-auto">
                       {previewContent}
                     </div>
                   )}
 
-                  <div className="richtext-flex richtext-items-center richtext-justify-between richtext-gap-[6px]">
-                    <Button onClick={submit} className="richtext-flex-1">
+                  <div className="flex items-center justify-between gap-[6px]">
+                    <Button onClick={submit} className="flex-1">
                       Submit
                     </Button>
 
@@ -116,7 +116,7 @@ function BubbleMenuKatex({ editor, ...props }: any) {
                 </>
               )
               : (
-                <div className="richtext-flex richtext-items-center richtext-justify-center richtext-gap-[6px]">
+                <div className="flex items-center justify-center gap-[6px]">
                   <ActionButton tooltip="Edit" action={() => toggleVisible(!visible)}>
                     <Pencil size={16} />
                   </ActionButton>

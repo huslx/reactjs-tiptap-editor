@@ -184,22 +184,22 @@ function ContentMenu(props: ContentMenuProps) {
     <div
       ref={dragElement}
       className={
-        `drag-handle richtext-duration-200 richtext-ease-in-out [transition-property:top,_left] ${props?.className}`
+        `drag-handle duration-200 ease-in-out [transition-property:top,_left] ${props?.className}`
       }
       style={{
         opacity: props?.disabled ? 0 : 1,
       }}
     >
-      <div className="richtext-flex richtext-items-center richtext-gap-0.5 richtext-duration-200 richtext-ease-in-out [transition-property:top,_left]">
+      <div className="flex items-center gap-0.5 duration-200 ease-in-out [transition-property:top,_left]">
         <Button
-          className="!richtext-size-7 richtext-cursor-grab"
+          className="!size-7 cursor-grab"
           disabled={props?.disabled}
           onClick={handleAdd}
           size="icon"
           type="button"
           variant="ghost"
         >
-          <IconComponent className="richtext-text-lg richtext-text-neutral-600 dark:richtext-text-neutral-200"
+          <IconComponent className="text-lg text-neutral-600 dark:text-neutral-200"
             name="Plus"
           />
         </Button>
@@ -207,13 +207,13 @@ function ContentMenu(props: ContentMenuProps) {
         <DropdownMenu onOpenChange={handleMenuOpenChange}
           open={menuOpen}
         >
-          <div className="richtext-relative richtext-flex richtext-flex-col">
+          <div className="relative flex flex-col">
             <Tooltip>
               <TooltipTrigger asChild
                 disabled={props?.disabled}
               >
                 <Button
-                  className="richtext-relative richtext-z-[1] !richtext-size-7 richtext-cursor-grab"
+                  className="relative z-[1] !size-7 cursor-grab"
                   disabled={props?.disabled}
                   size="icon"
                   type="button"
@@ -226,7 +226,7 @@ function ContentMenu(props: ContentMenuProps) {
                     setMenuOpen(true);
                   }}
                 >
-                  <IconComponent className="richtext-text-sm richtext-text-neutral-600 dark:richtext-text-neutral-200"
+                  <IconComponent className="text-sm text-neutral-600 dark:text-neutral-200"
                     name="Grip"
                   />
                 </Button>
@@ -237,16 +237,16 @@ function ContentMenu(props: ContentMenuProps) {
               </TooltipContent>
             </Tooltip>
 
-            <DropdownMenuTrigger className="richtext-absolute richtext-left-0 richtext-top-0 richtext-z-0 richtext-size-[28px]" />
+            <DropdownMenuTrigger className="absolute left-0 top-0 z-0 size-[28px]" />
           </div>
 
           <DropdownMenuContent align="start"
-            className="richtext-w-48"
+            className="w-48"
             side="bottom"
             sideOffset={0}
           >
             <DropdownMenuItem
-              className="richtext-flex richtext-gap-3 richtext-bg-opacity-10 hover:richtext-bg-red-400 hover:richtext-bg-opacity-20 focus:richtext-bg-red-400 focus:richtext-bg-opacity-30 focus:richtext-text-red-500 dark:hover:richtext-bg-opacity-20 dark:hover:richtext-text-red-500"
+              className="flex gap-3 bg-opacity-10 hover:bg-red-400 hover:bg-opacity-20 focus:bg-red-400 focus:bg-opacity-30 focus:text-red-500 dark:hover:bg-opacity-20 dark:hover:text-red-500"
               onClick={deleteNode}
             >
               <IconComponent name="Trash2" />
@@ -258,7 +258,7 @@ function ContentMenu(props: ContentMenuProps) {
 
             {hasClearExtension
               ? (
-                <DropdownMenuItem className="richtext-flex richtext-gap-3"
+                <DropdownMenuItem className="flex gap-3"
                   onClick={resetTextFormatting}
                 >
                   <IconComponent name="PaintRoller" />
@@ -270,7 +270,7 @@ function ContentMenu(props: ContentMenuProps) {
               )
               : null}
 
-            <DropdownMenuItem className="richtext-flex richtext-gap-3"
+            <DropdownMenuItem className="flex gap-3"
               onClick={copyNodeToClipboard}
             >
               <IconComponent name="Clipboard" />
@@ -280,7 +280,7 @@ function ContentMenu(props: ContentMenuProps) {
               </span>
             </DropdownMenuItem>
 
-            <DropdownMenuItem className="richtext-flex richtext-gap-3"
+            <DropdownMenuItem className="flex gap-3"
               onClick={duplicateNode}
             >
               <IconComponent name="Copy" />
@@ -299,7 +299,7 @@ function ContentMenu(props: ContentMenuProps) {
             {hasTextAlignExtension
               ? (
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger className="richtext-flex richtext-gap-3">
+                  <DropdownMenuSubTrigger className="flex gap-3">
                     <IconComponent name="AlignCenter" />
 
                     <span>
@@ -309,7 +309,7 @@ function ContentMenu(props: ContentMenuProps) {
 
                   <DropdownMenuPortal>
                     <DropdownMenuSubContent>
-                      <DropdownMenuItem className="richtext-flex richtext-gap-3"
+                      <DropdownMenuItem className="flex gap-3"
                         onClick={() => setTextAlign('left')}
                       >
                         <IconComponent name="AlignLeft" />
@@ -319,7 +319,7 @@ function ContentMenu(props: ContentMenuProps) {
                         </span>
                       </DropdownMenuItem>
 
-                      <DropdownMenuItem className="richtext-flex richtext-gap-3"
+                      <DropdownMenuItem className="flex gap-3"
                         onClick={() => setTextAlign('center')}
                       >
                         <IconComponent name="AlignCenter" />
@@ -329,7 +329,7 @@ function ContentMenu(props: ContentMenuProps) {
                         </span>
                       </DropdownMenuItem>
 
-                      <DropdownMenuItem className="richtext-flex richtext-gap-3"
+                      <DropdownMenuItem className="flex gap-3"
                         onClick={() => setTextAlign('right')}
                       >
                         <IconComponent name="AlignRight" />
@@ -347,7 +347,7 @@ function ContentMenu(props: ContentMenuProps) {
             {hasIndentExtension
               ? (
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger className="richtext-flex richtext-gap-3">
+                  <DropdownMenuSubTrigger className="flex gap-3">
                     <IconComponent name="IndentIncrease" />
 
                     <span>
@@ -358,7 +358,7 @@ function ContentMenu(props: ContentMenuProps) {
                   <DropdownMenuPortal>
                     <DropdownMenuSubContent>
                       <DropdownMenuItem
-                        className="richtext-flex richtext-gap-3"
+                        className="flex gap-3"
                         disabled={currentNode?.attrs?.indent >= IndentProps.max}
                         onClick={increaseIndent}
                       >
@@ -370,7 +370,7 @@ function ContentMenu(props: ContentMenuProps) {
                       </DropdownMenuItem>
 
                       <DropdownMenuItem
-                        className="richtext-flex richtext-gap-3"
+                        className="flex gap-3"
                         disabled={currentNode?.attrs?.indent <= IndentProps.min}
                         onClick={decreaseIndent}
                       >

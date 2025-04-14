@@ -1,6 +1,6 @@
 export const RESET_CSS = `
 .reactjs-tiptap-editor, 
-.richtext-dialog-content {
+.dialog-content {
   button,
   input:where([type=button]),
   input:where([type=reset]),
@@ -41,11 +41,11 @@ export const RESET_CSS = `
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
-    border-color: hsl(var(--richtext-border));
+    border-color: hsl(var(--border));
   }
 
-  background-color: hsl(var(--richtext-background));
-  color: hsl(var(--richtext-foreground));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 
   hr {
     height: 0;
@@ -125,11 +125,11 @@ div[data-tippy-root] {
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
-    border-color: hsl(var(--richtext-border));
+    border-color: hsl(var(--border));
   }
 
-  background-color: hsl(var(--richtext-background));
-  color: hsl(var(--richtext-foreground));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 
   button, input, textarea {
     cursor: pointer;

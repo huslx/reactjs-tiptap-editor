@@ -41,18 +41,18 @@ function LinkEditBlock(props: IPropsLinkEditBlock) {
   }
 
   return (
-    <div className="border-neutral-200 richtext-rounded-lg !richtext-border richtext-bg-white richtext-p-2 richtext-shadow-sm dark:richtext-border-neutral-800 dark:richtext-bg-black">
-      <form className="richtext-flex richtext-flex-col richtext-gap-2"
+    <div className="border-neutral-200 rounded-lg !border bg-white p-2 shadow-sm dark:border-neutral-800 dark:bg-black">
+      <form className="flex flex-col gap-2"
         onSubmit={handleSubmit}
       >
         <Label className="mb-[6px]">
           {t('editor.link.dialog.text')}
         </Label>
 
-        <div className="richtext-mb-[10px] richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-          <div className="richtext-relative richtext-w-full richtext-max-w-sm richtext-items-center">
+        <div className="mb-[10px] flex w-full max-w-sm items-center gap-1.5">
+          <div className="relative w-full max-w-sm items-center">
             <Input
-              className="richtext-w-80"
+              className="w-80"
               onChange={e => setForm({ ...form, text: e.target.value })}
               placeholder="Text"
               required
@@ -66,25 +66,25 @@ function LinkEditBlock(props: IPropsLinkEditBlock) {
           {t('editor.link.dialog.link')}
         </Label>
 
-        <div className="richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-          <div className="richtext-relative richtext-w-full richtext-max-w-sm richtext-items-center">
+        <div className="flex w-full max-w-sm items-center gap-1.5">
+          <div className="relative w-full max-w-sm items-center">
             <Input
-              className="richtext-pl-10"
+              className="pl-10"
               onChange={e => setForm({ ...form, link: e.target.value })}
               required
               type="url"
               value={form.link}
             />
 
-            <span className="richtext-absolute richtext-inset-y-0 richtext-start-0 richtext-flex richtext-items-center richtext-justify-center richtext-px-2">
-              <IconComponent className="richtext-size-5 richtext-text-muted-foreground"
+            <span className="absolute inset-y-0 start-0 flex items-center justify-center px-2">
+              <IconComponent className="size-5 text-muted-foreground"
                 name="Link"
               />
             </span>
           </div>
         </div>
 
-        <div className="richtext-flex richtext-items-center richtext-space-x-2">
+        <div className="flex items-center space-x-2">
           <Label>
             {t('editor.link.dialog.openInNewTab')}
           </Label>
@@ -97,7 +97,7 @@ function LinkEditBlock(props: IPropsLinkEditBlock) {
           />
         </div>
 
-        <Button className="richtext-mt-2 richtext-self-end"
+        <Button className="mt-2 self-end"
           type="submit"
         >
           {t('editor.link.dialog.button.apply')}

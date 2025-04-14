@@ -62,7 +62,7 @@ function ImageGifWrap({ selectImage, giphyApiKey, children }: IProps) {
       </PopoverTrigger>
 
       <PopoverContent align="start"
-        className="richtext-size-full richtext-p-2"
+        className="size-full p-2"
         hideWhenDetached
         side="bottom"
       >
@@ -71,7 +71,7 @@ function ImageGifWrap({ selectImage, giphyApiKey, children }: IProps) {
           giphyApiKey
             ? (
               <>
-                <div className="richtext-mb-[10px] richtext-w-full">
+                <div className="mb-[10px] w-full">
                   <Input
                     onChange={handleInputChange}
                     placeholder="Search GIF"
@@ -80,14 +80,14 @@ function ImageGifWrap({ selectImage, giphyApiKey, children }: IProps) {
                   />
                 </div>
 
-                <div className="richtext-max-h-[280px] richtext-overflow-y-auto">
-                  <div className="richtext-grid richtext-grid-cols-2 richtext-gap-1 ">
+                <div className="max-h-[280px] overflow-y-auto">
+                  <div className="grid grid-cols-2 gap-1 ">
 
                     {gifs?.length
                       ? gifs?.map((o: any) => (
                         <img
                           alt="giphy"
-                          className="richtext-cursor-pointer richtext-text-center"
+                          className="cursor-pointer text-center"
                           height={o.images.fixed_width_downsampled.height}
                           key={`giphy-${o.id}`}
                           onClick={() => selectImage(o)}

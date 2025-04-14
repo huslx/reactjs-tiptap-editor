@@ -1,13 +1,13 @@
 .reactjs-tiptap-editor.reactjs-tiptap-editor {
   .ProseMirror.ProseMirror.ProseMirror {
-    @apply richtext-caret-black dark:richtext-caret-white richtext-outline-0 richtext-pr-8 richtext-pl-20 richtext-py-16 richtext-z-0 lg:richtext-pl-8 lg:richtext-pr-8;
+    @apply caret-black dark:caret-white outline-0 pr-8 pl-20 py-16 z-0 lg:pl-8 lg:pr-8;
     min-height: 180px;
     padding: 32px 80px;
 
     .img-placeholder {
       width: fit-content;
       position: relative;
-      @apply richtext-backdrop-blur-sm richtext-bg-white/30;
+      @apply backdrop-blur-sm bg-white/30;
 
       &:before {
         content: '';
@@ -18,127 +18,127 @@
         width: 24px;
         height: 24px;
         margin: -12px 0 0 -12px;
-        @apply richtext-animate-spin richtext-border-current richtext-border-t-transparent richtext-rounded-full richtext-border-[3px] richtext-inline-block;
+        @apply animate-spin border-current border-t-transparent rounded-full border-[3px] inline-block;
       }
     }
 
     .tableWrapper {
-      @apply richtext-my-12;
+      @apply my-12;
       table {
         box-sizing: border-box;
-        @apply richtext-box-border richtext-w-full richtext-border-collapse richtext-rounded richtext-border-black/10;
-        @apply dark:richtext-border-white/20;
+        @apply box-border w-full border-collapse rounded border-black/10;
+        @apply dark:border-white/20;
         overflow: visible;
         td,
         th {
-          @apply richtext-relative richtext-min-w-[100px] richtext-border richtext-border-black/10 richtext-p-2 richtext-text-left richtext-align-top;
-          @apply dark:richtext-border-white/20;
+          @apply relative min-w-[100px] border border-black/10 p-2 text-left align-top;
+          @apply dark:border-white/20;
 
           &:first-of-type:not(a) {
-            @apply richtext-mt-0;
+            @apply mt-0;
           }
 
           p {
-            @apply richtext-m-0;
+            @apply m-0;
 
             & + p {
-              @apply richtext-mt-3;
+              @apply mt-3;
             }
           }
         }
 
         .column-resize-handle {
-          @apply richtext-bottom-[-2px] richtext-absolute richtext-right-[-2px] richtext-top-0 richtext-w-1 richtext-z-10 richtext-pointer-events-none richtext-bg-primary;
+          @apply bottom-[-2px] absolute right-[-2px] top-0 w-1 z-10 pointer-events-none bg-primary;
         }
         .resize-cursor {
           cursor: 'col-resize';
         }
 
         .selectedCell {
-          @apply richtext-bg-black/5 richtext-border-black/20 richtext-border-double;
-          @apply dark:richtext-bg-white/10 dark:richtext-border-white/20;
+          @apply bg-black/5 border-black/20 border-double;
+          @apply dark:bg-white/10 dark:border-white/20;
         }
         .grip-column,
         .grip-row {
-          @apply richtext-absolute richtext-z-10 richtext-flex richtext-cursor-pointer richtext-items-center richtext-justify-center richtext-bg-black/5;
-          @apply dark:richtext-bg-white/10;
+          @apply absolute z-10 flex cursor-pointer items-center justify-center bg-black/5;
+          @apply dark:bg-white/10;
         }
 
         .grip-column {
-          @apply -richtext-top-3 richtext-left-0 -richtext-ml-[1px] richtext-h-3 richtext-w-[calc(100%+1px)] richtext-border-l richtext-border-black/20;
-          @apply dark:richtext-border-white/20;
+          @apply -top-3 left-0 -ml-[1px] h-3 w-[calc(100%+1px)] border-l border-black/20;
+          @apply dark:border-white/20;
 
           &:hover,
           &.selected {
             &::before {
               content: '';
-              @apply richtext-w-2.5;
+              @apply w-2.5;
             }
           }
 
           &:hover {
-            @apply richtext-bg-black/10;
-            @apply dark:richtext-bg-white/20;
+            @apply bg-black/10;
+            @apply dark:bg-white/20;
 
             &::before {
-              @apply richtext-border-b-2 richtext-border-dotted richtext-border-black/60;
-              @apply dark:richtext-border-white/60;
+              @apply border-b-2 border-dotted border-black/60;
+              @apply dark:border-white/60;
             }
           }
 
           &.first {
-            @apply richtext-rounded-tl-sm richtext-border-transparent;
+            @apply rounded-tl-sm border-transparent;
           }
 
           &.last {
-            @apply richtext-rounded-tr-sm;
+            @apply rounded-tr-sm;
           }
 
           &.selected {
-            @apply richtext-border-black/30 richtext-bg-black/30 richtext-shadow-sm;
-            @apply dark:richtext-border-white/30 dark:richtext-bg-white/30;
+            @apply border-black/30 bg-black/30 shadow-sm;
+            @apply dark:border-white/30 dark:bg-white/30;
 
             &::before {
-              @apply richtext-border-b-2 richtext-border-dotted;
+              @apply border-b-2 border-dotted;
             }
           }
         }
 
         .grip-row {
-          @apply -richtext-left-3 richtext-top-0 -richtext-mt-[1px] richtext-h-[calc(100%+1px)] richtext-w-3 richtext-border-t richtext-border-black/20;
-          @apply dark:richtext-border-white/20;
+          @apply -left-3 top-0 -mt-[1px] h-[calc(100%+1px)] w-3 border-t border-black/20;
+          @apply dark:border-white/20;
 
           &:hover,
           &.selected {
             &::before {
-              @apply richtext-h-2.5;
+              @apply h-2.5;
               content: '';
             }
           }
           &:hover {
-            @apply richtext-bg-black/10;
-            @apply dark:richtext-bg-white/20;
+            @apply bg-black/10;
+            @apply dark:bg-white/20;
 
             &::before {
-              @apply richtext-border-l-2 richtext-border-dotted richtext-border-black/60;
-              @apply dark:richtext-border-white/60;
+              @apply border-l-2 border-dotted border-black/60;
+              @apply dark:border-white/60;
             }
           }
 
           &.first {
-            @apply richtext-rounded-tl-sm richtext-border-transparent;
+            @apply rounded-tl-sm border-transparent;
           }
 
           &.last {
-            @apply richtext-rounded-bl-sm;
+            @apply rounded-bl-sm;
           }
 
           &.selected {
-            @apply richtext-border-black/30 richtext-bg-black/30 richtext-shadow-sm;
-            @apply dark:richtext-border-white/30 dark:richtext-bg-white/30;
+            @apply border-black/30 bg-black/30 shadow-sm;
+            @apply dark:border-white/30 dark:bg-white/30;
 
             &::before {
-              @apply richtext-border-l-2 richtext-border-dotted;
+              @apply border-l-2 border-dotted;
             }
           }
         }
@@ -146,28 +146,28 @@
     }
 
     [data-type='horizontalRule'] {
-      @apply richtext-transition-all richtext-duration-100 richtext-ease-in-out richtext-cursor-pointer;
+      @apply transition-all duration-100 ease-in-out cursor-pointer;
 
       &.ProseMirror-selectednode {
-        @apply richtext-bg-black/5 dark:richtext-bg-white/10;
+        @apply bg-black/5 dark:bg-white/10;
 
         hr {
-          @apply richtext-border-t-black/30 dark:richtext-border-t-white/30;
+          @apply border-t-black/30 dark:border-t-white/30;
         }
       }
 
       &:hover:not(&.ProseMirror-selectednode) {
-        @apply richtext-bg-black/5;
-        @apply dark:richtext-bg-white/10;
+        @apply bg-black/5;
+        @apply dark:bg-white/10;
       }
     }
     :not(.dragging) .ProseMirror-selectednode:not(.image-view) {
-      @apply richtext-outline-none richtext-bg-black/10 dark:richtext-bg-white/20 richtext-shadow-none richtext-transition-colors;
+      @apply outline-none bg-black/10 dark:bg-white/20 shadow-none transition-colors;
     }
 
     .selection:not(.image-view),
     *:not(.image-view)::selection {
-      @apply richtext-bg-black/10 dark:richtext-bg-white/20;
+      @apply bg-black/10 dark:bg-white/20;
     }
 
     .is-empty::before {
@@ -200,10 +200,10 @@
       content: attr(data-placeholder);
     }
     .ProseMirror-gapcursor {
-      @apply richtext-relative richtext-w-full richtext-max-w-2xl richtext-mx-auto;
+      @apply relative w-full max-w-2xl mx-auto;
 
       &:after {
-        @apply richtext-border-t-black/40 dark:richtext-border-t-white/40 richtext-w-full richtext-top-[-1.5em] richtext-max-w-2xl richtext-mx-auto richtext-left-0 richtext-right-0;
+        @apply border-t-black/40 dark:border-t-white/40 w-full top-[-1.5em] max-w-2xl mx-auto left-0 right-0;
       }
     }
 
@@ -270,7 +270,7 @@
 
       &.focus {
         img {
-          @apply richtext-outline-primary richtext-outline-2 richtext-outline;
+          @apply outline-primary outline-2 outline;
         }
       }
 
@@ -287,8 +287,8 @@
       z-index: 1;
       width: 100%;
       height: 100%;
-      @apply richtext-border !important;
-      @apply richtext-border-border !important;
+      @apply border !important;
+      @apply border-border !important;
 
       &__handler {
         position: absolute;

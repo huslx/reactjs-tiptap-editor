@@ -80,7 +80,7 @@ export function BubbleMenuIframe({ editor }: any) {
         }}
       >
 
-        <div className="richtext-w-auto richtext-px-3 richtext-py-2 richtext-transition-all !richtext-border richtext-rounded-sm richtext-shadow-sm richtext-pointer-events-auto richtext-select-none richtext-border-neutral-200 dark:richtext-border-neutral-800 richtext-bg-background">
+        <div className="w-auto px-3 py-2 transition-all !border rounded-sm shadow-sm pointer-events-auto select-none border-neutral-200 dark:border-neutral-800 bg-background">
           <ActionButton
             action={visitLink}
             icon="Eye"

@@ -70,19 +70,19 @@ const ActionButton = React.forwardRef<HTMLButtonElement, Partial<ActionButtonPro
             onClick={action}
             ref={ref}
             size="sm"
-            className={cn('richtext-w-[32px] richtext-h-[32px]', customClass)}
+            className={cn('w-[32px] h-[32px]', customClass)}
             // pressed={isActive?.() || false}
             disabled={disabled}
             {...(rest as Omit<typeof rest, 'loading'>)}
           >
-            {icon && <Icon name={icon} className="richtext-size-4" />}
+            {icon && <Icon name={icon} className="size-4" />}
             {children}
           </Comp>
         </TooltipTrigger>
 
         {tooltip && (
           <TooltipContent {...tooltipOptions}>
-            <div className="richtext-flex richtext-max-w-24 richtext-flex-col richtext-items-center richtext-text-center">
+            <div className="flex max-w-24 flex-col items-center text-center">
               <div>
                 {tooltip}
               </div>

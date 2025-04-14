@@ -61,8 +61,8 @@ function BubbleMenuTwitter({ editor, disabled }: BubbleMenuTwitterProps) {
                   />
                 )
                 : (
-                  <div className="richtext-flex richtext-items-center richtext-gap-2 richtext-rounded-lg !richtext-border richtext-border-neutral-200 richtext-bg-white richtext-p-2 richtext-shadow-sm dark:richtext-border-neutral-800 dark:richtext-bg-black">
-                    <div className="richtext-flex richtext-flex-nowrap">
+                  <div className="flex items-center gap-2 rounded-lg !border border-neutral-200 bg-white p-2 shadow-sm dark:border-neutral-800 dark:bg-black">
+                    <div className="flex flex-nowrap">
                       <ActionButton
                         icon="Pencil"
                         tooltip={t('editor.link.edit.tooltip')}

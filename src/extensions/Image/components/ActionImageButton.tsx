@@ -100,7 +100,7 @@ function ActionImageButton(props: any) {
               : 'link'
           }
         >
-          <TabsList className="richtext-grid richtext-w-full richtext-grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2">
             {uploadOptions.resourceImage === 'both' || uploadOptions.resourceImage === 'upload'
               ? (
                 <TabsTrigger value="upload">
@@ -118,7 +118,7 @@ function ActionImageButton(props: any) {
               : <></>}
           </TabsList>
 
-          <div className="richtext-my-[10px] richtext-flex richtext-items-center richtext-gap-[4px]">
+          <div className="my-[10px] flex items-center gap-[4px]">
             <Checkbox
               checked={imageInline}
               onCheckedChange={(v) => {
@@ -132,8 +132,8 @@ function ActionImageButton(props: any) {
           </div>
 
           <TabsContent value="upload">
-            <div className="richtext-flex richtext-items-center richtext-gap-[10px]">
-              <Button className="richtext-mt-1 richtext-w-full"
+            <div className="flex items-center gap-[10px]">
+              <Button className="mt-1 w-full"
                 onClick={handleClick}
                 size="sm"
               >
@@ -161,7 +161,7 @@ function ActionImageButton(props: any) {
 
           <TabsContent value="link">
             <form onSubmit={handleLink}>
-              <div className="richtext-flex richtext-items-center richtext-gap-2">
+              <div className="flex items-center gap-2">
                 <Input
                   autoFocus
                   onChange={e => setLink(e.target.value)}

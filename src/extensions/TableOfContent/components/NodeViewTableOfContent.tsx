@@ -92,7 +92,7 @@ export function NodeViewTableOfContent({ editor }: any) {
       {isEditable
         ? (
           <div style={{ position: 'relative' }}>
-            <p className="text-[20px] richtext-mb-[8px] richtext-font-semibold">
+            <p className="text-[20px] mb-[8px] font-semibold">
               {t('editor.table_of_content')}
             </p>
 

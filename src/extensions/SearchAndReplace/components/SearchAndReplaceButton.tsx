@@ -94,25 +94,25 @@ function SearchAndReplaceButton({ editor, ...props }: any) {
 
       <PopoverContent
         align="start"
-        className="richtext-w-full"
+        className="w-full"
         hideWhenDetached
         side="bottom"
       >
 
-        <div className="richtext-mb-[6px] richtext-flex richtext-items-center richtext-justify-between">
+        <div className="mb-[6px] flex items-center justify-between">
           <Label>
             {t('editor.search.dialog.text')}
           </Label>
 
-          <span className="richtext-font-semibold">
+          <span className="font-semibold">
             {results.length > 0 ? `${currentIndex + 1}/${results.length}` : '0/0'}
           </span>
         </div>
 
-        <div className="richtext-mb-[10px] richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
+        <div className="mb-[10px] flex w-full max-w-sm items-center gap-1.5">
           <Input
             autoFocus
-            className="richtext-w-full"
+            className="w-full"
             onChange={e => setSearchValue(e.target.value)}
             placeholder="Text"
             required
@@ -120,14 +120,14 @@ function SearchAndReplaceButton({ editor, ...props }: any) {
             value={searchValue}
           />
 
-          <Button className="richtext-flex-1"
+          <Button className="flex-1"
             disabled={results.length === 0}
             onClick={editor.commands.goToPrevSearchResult}
           >
             <IconComponent name="ChevronUp" />
           </Button>
 
-          <Button className="richtext-flex-1"
+          <Button className="flex-1"
             disabled={results.length === 0}
             onClick={editor.commands.goToNextSearchResult}
           >
@@ -136,14 +136,14 @@ function SearchAndReplaceButton({ editor, ...props }: any) {
 
         </div>
 
-        <Label className="richtext-mb-[6px]">
+        <Label className="mb-[6px]">
           {t('editor.replace.dialog.text')}
         </Label>
 
-        <div className="richtext-mb-[5px] richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-          <div className="richtext-relative richtext-w-full richtext-max-w-sm richtext-items-center">
+        <div className="mb-[5px] flex w-full max-w-sm items-center gap-1.5">
+          <div className="relative w-full max-w-sm items-center">
             <Input
-              className="richtext-w-80"
+              className="w-80"
               onChange={e => setReplaceValue(e.target.value)}
               placeholder="Text"
               required
@@ -153,7 +153,7 @@ function SearchAndReplaceButton({ editor, ...props }: any) {
           </div>
         </div>
 
-        <div className="richtext-mb-[10px] richtext-flex richtext-items-center richtext-space-x-2">
+        <div className="mb-[10px] flex items-center space-x-2">
           <Switch
             checked={caseSensitive}
             onCheckedChange={(e: any) => {
@@ -167,15 +167,15 @@ function SearchAndReplaceButton({ editor, ...props }: any) {
           </Label>
         </div>
 
-        <div className="richtext-flex richtext-items-center richtext-gap-[10px]">
-          <Button className="richtext-flex-1"
+        <div className="flex items-center gap-[10px]">
+          <Button className="flex-1"
             disabled={results.length === 0}
             onClick={editor.commands.replace}
           >
             {t('editor.replace.dialog.text')}
           </Button>
 
-          <Button className="richtext-flex-1"
+          <Button className="flex-1"
             disabled={results.length === 0}
             onClick={editor.commands.replaceAll}
           >

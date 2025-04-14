@@ -16,25 +16,17 @@ import {
 } from '@/extensions/Table/utils';
 import { useLocale } from '@/locales';
 
+import BubbleMenuContent from './BubbleMenuContent';
+
 export interface TableBubbleMenuProps {
   editor: Editor;
   disabled?: boolean;
   actions?: ActionButtonProps[];
 }
 
-function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
-  const shouldColumnGripShow = useCallback(
-    ({ view, state, from }: ShouldShowProps) => {
-      if (!state) {
-        return false;
-      }
-
-      return isColumnGripSelected({ editor, view, state, from: from || 0 });
-    },
-    [editor]
-  );
-
-  const shouldRowGripShow = useCallback(
+function TableRowBubbleMenu ({ editor, disabled }: TableBubbleMenuProps) {
+  const { t } = useLocale();
+  const shouldShow = useCallback(
     ({ view, state, from }: ShouldShowProps) => {
       if (!state || !from) {
         return false;
@@ -44,30 +36,81 @@ function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
     },
     [editor]
   );
+  function onAddRowAbove() {
+    editor.chain().focus().addRowBefore().run();
+  }
 
-  const shouldSelectionShow = ({ editor }: any) => {
-    const { selection } = editor.view.state;
-    const { $from, to } = selection;
+  function onAddRowBelow() {
+    editor.chain().focus().addRowAfter().run();
+  }
 
-    // check content select length is not empty
-    if ($from.pos === to) {
-      return false;
-    }
+  function onDeleteRow() {
+    editor.chain().focus().deleteRow().run();
+  }
+  if(disabled) {
+    return null;
+  }
+  return (
+    <BubbleMenu
+      editor={editor}
+      pluginKey="tableRowMenu"
+      shouldShow={shouldShow}
+      updateDelay={0}
+      tippyOptions={{
+        placement: 'left',
+        offset: [0, 15],
+        popperOptions: {
+          modifiers: [{ name: 'flip', enabled: false }],
+        },
+      }}
+    >
+      <BubbleMenuContent vertical>
+        <ActionButton
+          action={onAddRowAbove}
+          disabled={!editor?.can().addRowBefore?.()}
+          icon="BetweenVerticalEnd"
+          tooltip={t('editor.table.menu.insertRowAbove')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
 
-    return selection instanceof TextSelection;
-  };
+        <ActionButton
+          action={onAddRowBelow}
+          disabled={!editor?.can()?.addRowAfter?.()}
+          icon="BetweenVerticalStart"
+          tooltip={t('editor.table.menu.insertRowBelow')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
 
-  const shouldActiveShow = ({ editor }: { editor: Editor }) => {
-    return isActive(editor.view.state, 'table');
-  };
-  const shouldShow = (showProps: ShouldShowProps) => {
-    return (
-      shouldActiveShow(showProps) ||
-      shouldColumnGripShow(showProps) ||
-      shouldRowGripShow(showProps)
-    ) && !shouldSelectionShow(showProps);
-  };
+        <ActionButton
+          action={onDeleteRow}
+          disabled={!editor?.can()?.deleteRow?.()}
+          icon="DeleteRow"
+          tooltip={t('editor.table.menu.deleteRow')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
+      </BubbleMenuContent>
+    </BubbleMenu>
+  );
+}
+
+function TableColBubbleMenu({ editor, disabled }: TableBubbleMenuProps) {
   const { t } = useLocale();
+  const shouldShow = useCallback(
+    ({ view, state, from }: ShouldShowProps) => {
+      if (!state) {
+        return false;
+      }
+
+      return isColumnGripSelected({ editor, view, state, from: from || 0 });
+    },
+    [editor]
+  );
 
   function onAddColumnBefore() {
     editor.chain().focus().addColumnBefore().run();
@@ -80,17 +123,88 @@ function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
   function onDeleteColumn() {
     editor.chain().focus().deleteColumn().run();
   }
-  function onAddRowAbove() {
-    editor.chain().focus().addRowBefore().run();
+
+  if(disabled) {
+    return null;
   }
 
-  function onAddRowBelow() {
-    editor.chain().focus().addRowAfter().run();
-  }
+  return (
+    <BubbleMenu
+      editor={editor}
+      pluginKey="tableColumnMenu"
+      shouldShow={shouldShow}
+      updateDelay={0}
+      tippyOptions={{
+        offset: [0, 15],
+        popperOptions: {
+          modifiers: [{ name: 'flip', enabled: false }],
+        },
+      }}
+    >
+      <BubbleMenuContent>
+        <ActionButton
+          action={onAddColumnBefore}
+          disabled={!editor?.can()?.addColumnBefore?.()}
+          icon="BetweenHorizonalEnd"
+          tooltip={t('editor.table.menu.insertColumnBefore')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
 
-  function onDeleteRow() {
-    editor.chain().focus().deleteRow().run();
-  }
+        <ActionButton
+          action={onAddColumnAfter}
+          disabled={!editor?.can()?.addColumnAfter?.()}
+          icon="BetweenHorizonalStart"
+          tooltip={t('editor.table.menu.insertColumnAfter')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
+
+        <ActionButton
+          action={onDeleteColumn}
+          disabled={!editor?.can().deleteColumn?.()}
+          icon="DeleteColumn"
+          tooltip={t('editor.table.menu.deleteColumn')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
+      </BubbleMenuContent>
+    </BubbleMenu>
+  );
+}
+
+function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
+
+  const shouldSelectionShow = ({ editor, view, state, from }: ShouldShowProps) => {
+    const { selection } = editor.view.state;
+    const { $from, to } = selection;
+
+    // check content select length is not empty
+    if ($from.pos === to) {
+      return false;
+    }
+
+    if (!state || !from) {
+      return false;
+    }
+
+    return (
+      selection instanceof TextSelection ||
+      isRowGripSelected({ editor, view, state, from }) ||
+      isColumnGripSelected({ editor, view, state, from })
+    );
+  };
+
+  const shouldActiveShow = ({ editor }: { editor: Editor }) => {
+    return isActive(editor.view.state, 'table');
+  };
+  const shouldShow = (showProps: ShouldShowProps) => {
+    return shouldActiveShow(showProps) && !shouldSelectionShow(showProps);
+  };
+  const { t } = useLocale();
 
   function onMergeCell() {
     editor.chain().focus().mergeCells().run();
@@ -128,6 +242,10 @@ function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
     return rect;
   };
 
+  if(disabled) {
+    return null;
+  }
+
   return (
     <BubbleMenu
       editor={editor}
@@ -135,7 +253,7 @@ function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
       shouldShow={shouldShow}
       updateDelay={0}
       tippyOptions={{
-        offset: [0, 8],
+        offset: [0, 15],
         popperOptions: {
           modifiers: [{ name: 'flip', enabled: false }],
         },
@@ -145,141 +263,77 @@ function TableBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
         sticky: 'popper',
       }}
     >
-      {disabled ? (
-        <></>
-      ) : (
-        <div className="richtext-flex richtext-size-full richtext-min-w-32 richtext-flex-row richtext-items-center richtext-gap-0.5 richtext-rounded-lg !richtext-border richtext-border-border richtext-bg-background richtext-p-2 richtext-leading-none richtext-shadow-sm">
-          {actions && (
-            <>
-              {actions.map((item, i) => (
-                <ActionButton key={i}
-                  {...item}
-                />
-              ))}
-
-              <Separator
-                className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-                orientation="vertical"
+      <BubbleMenuContent>
+        {actions && (
+          <>
+            {actions.map((item, i) => (
+              <ActionButton key={i}
+                {...item}
               />
-            </>
-          )}
+            ))}
 
-          <ActionButton
-            action={onAddColumnBefore}
-            disabled={!editor?.can()?.addColumnBefore?.()}
-            icon="BetweenHorizonalEnd"
-            tooltip={t('editor.table.menu.insertColumnBefore')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
+            <Separator
+              className="!mx-1 !my-2 !h-[16px]"
+              orientation="vertical"
+            />
+          </>
+        )}
 
-          <ActionButton
-            action={onAddColumnAfter}
-            disabled={!editor?.can()?.addColumnAfter?.()}
-            icon="BetweenHorizonalStart"
-            tooltip={t('editor.table.menu.insertColumnAfter')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
+        <ActionButton
+          action={onMergeCell}
+          disabled={!editor?.can()?.mergeCells?.()}
+          icon="TableCellsMerge"
+          tooltip={t('editor.table.menu.mergeCells')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
 
-          <ActionButton
-            action={onDeleteColumn}
-            disabled={!editor?.can().deleteColumn?.()}
-            icon="DeleteColumn"
-            tooltip={t('editor.table.menu.deleteColumn')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
+        <ActionButton
+          action={onSplitCell}
+          disabled={!editor?.can()?.splitCell?.()}
+          icon="TableCellsSplit"
+          tooltip={t('editor.table.menu.splitCells')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
 
-          <Separator
-            className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-            orientation="vertical"
-          />
+        <Separator
+          className="!mx-1 !my-2 !h-[16px]"
+          orientation="vertical"
+        />
 
-          <ActionButton
-            action={onAddRowAbove}
-            disabled={!editor?.can().addRowBefore?.()}
-            icon="BetweenVerticalEnd"
-            tooltip={t('editor.table.menu.insertRowAbove')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
+        <HighlightActionButton
+          action={onSetCellBackground}
+          editor={editor}
+          tooltip={t('editor.table.menu.setCellsBgColor')}
+          tooltipOptions={{
+            sideOffset: 15,
+          }}
+        />
 
-          <ActionButton
-            action={onAddRowBelow}
-            disabled={!editor?.can()?.addRowAfter?.()}
-            icon="BetweenVerticalStart"
-            tooltip={t('editor.table.menu.insertRowBelow')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
-
-          <ActionButton
-            action={onDeleteRow}
-            disabled={!editor?.can()?.deleteRow?.()}
-            icon="DeleteRow"
-            tooltip={t('editor.table.menu.deleteRow')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
-
-          <Separator
-            className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-            orientation="vertical"
-          />
-
-          <ActionButton
-            action={onMergeCell}
-            disabled={!editor?.can()?.mergeCells?.()}
-            icon="TableCellsMerge"
-            tooltip={t('editor.table.menu.mergeCells')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
-
-          <ActionButton
-            action={onSplitCell}
-            disabled={!editor?.can()?.splitCell?.()}
-            icon="TableCellsSplit"
-            tooltip={t('editor.table.menu.splitCells')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
-
-          <Separator
-            className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
-            orientation="vertical"
-          />
-
-          <HighlightActionButton
-            action={onSetCellBackground}
-            editor={editor}
-            tooltip={t('editor.table.menu.setCellsBgColor')}
-            tooltipOptions={{
-              sideOffset: 15,
-            }}
-          />
-
-          <ActionButton
-            action={onDeleteTable}
-            disabled={!editor?.can()?.deleteTable?.()}
-            icon="Trash2"
-            tooltip={t('editor.table.menu.deleteTable')}
-            tooltip-options={{
-              sideOffset: 15,
-            }}
-          />
-        </div>
-      )}
+        <ActionButton
+          action={onDeleteTable}
+          disabled={!editor?.can()?.deleteTable?.()}
+          icon="Trash2"
+          tooltip={t('editor.table.menu.deleteTable')}
+          tooltip-options={{
+            sideOffset: 15,
+          }}
+        />
+      </BubbleMenuContent>
     </BubbleMenu>
+  );
+}
+
+function TableBubbleMenu(props: TableBubbleMenuProps) {
+  return (
+    <>
+      <TableMainBubbleMenu {...props} />
+      <TableRowBubbleMenu {...props} />
+      <TableColBubbleMenu {...props} />
+    </>
   );
 }
 

@@ -68,17 +68,17 @@ export const EmojiList: React.FC<IProps> = forwardRef((props, ref) => {
   }));
 
   return (
-    <div className="richtext-max-h-[320px] richtext-w-[200px] richtext-overflow-y-auto richtext-overflow-x-hidden richtext-rounded-sm !richtext-border richtext-bg-popover richtext-p-1 richtext-text-popover-foreground richtext-shadow-md richtext-outline-none">
+    <div className="max-h-[320px] w-[200px] overflow-y-auto overflow-x-hidden rounded-sm !border bg-popover p-1 text-popover-foreground shadow-md outline-none">
       <div ref={$container}>
         {props.items.length > 0
           ? (
             props.items.map((item, index) => (
               <span
-                className={clsx(' richtext-relative richtext-flex  richtext-cursor-default richtext-select-none richtext-items-center richtext-rounded-sm richtext-px-2 richtext-py-1.5 richtext-text-sm richtext-outline-none richtext-transition-colors hover:richtext-bg-accent focus:richtext-bg-accent  focus:richtext-text-accent-foreground', index === selectedIndex ? 'bg-accent' : '')}
+                className={clsx(' relative flex  cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:bg-accent  focus:text-accent-foreground', index === selectedIndex ? 'bg-accent' : '')}
                 key={`emoji-list-code-${index}`}
                 onClick={() => selectItem(index)}
               >
-                {item.fallbackImage ? <img className="richtext-size-[1em]"
+                {item.fallbackImage ? <img className="size-[1em]"
                   src={item.fallbackImage}
                 /> : item.emoji}
                 :
@@ -89,7 +89,7 @@ export const EmojiList: React.FC<IProps> = forwardRef((props, ref) => {
             ))
           )
           : (
-            <div className="richtext-relative richtext-flex  richtext-cursor-default richtext-select-none richtext-items-center richtext-rounded-sm richtext-px-2 richtext-py-1.5 richtext-text-sm richtext-outline-none richtext-transition-colors">
+            <div className="relative flex  cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors">
               <span>
                 {t('no_result_found')}
               </span>

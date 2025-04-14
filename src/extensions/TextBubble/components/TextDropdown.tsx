@@ -100,20 +100,20 @@ function TextDropdown(props: IPropsTextDropdown) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="richtext-flex richtext-h-[32px] richtext-gap-1 richtext-px-1.5"
+        <Button className="flex h-[32px] gap-1 px-1.5"
           variant="ghost"
         >
-          <span className="richtext-whitespace-nowrap richtext-text-sm richtext-font-normal">
+          <span className="whitespace-nowrap text-sm font-normal">
             {' '}
             {activeItem?.label}
           </span>
 
-          <ChevronDown className="richtext-size-4" />
+          <ChevronDown className="size-4" />
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="start"
-        className="richtext-w-full richtext-p-1"
+        className="w-full p-1"
         hideWhenDetached
         sideOffset={5}
       >
@@ -123,12 +123,12 @@ function TextDropdown(props: IPropsTextDropdown) {
           return (
             <DropdownMenuCheckboxItem
               checked={item.isActive?.() || false}
-              className="richtext-cursor-pointer"
+              className="cursor-pointer"
               key={`text-bubble-${index}`}
               onClick={() => item.action()}
             >
-              <div className="richtext-flex richtext-items-center richtext-gap-2 richtext-px-2">
-                <Icon className="richtext-h3 richtext-w-3" />
+              <div className="flex items-center gap-2 px-2">
+                <Icon className="h3 w-3" />
 
                 <span>
                   {' '}

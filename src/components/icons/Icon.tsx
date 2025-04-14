@@ -15,12 +15,12 @@ function IconComponent(props: IconComponentProps) {
 
   return Icon ? (
     <Icon
-      className={`richtext-size-4 ${props?.className || ''}`}
+      className={`size-4 ${props?.className || ''}`}
       onClick={props?.onClick}
     />
   ) : (
     <DynamicIcon
-      className={`richtext-size-4 ${props?.className || ''}`}
+      className={`size-4 ${props?.className || ''}`}
       name={props.name as any}
       onClick={props?.onClick}
     />

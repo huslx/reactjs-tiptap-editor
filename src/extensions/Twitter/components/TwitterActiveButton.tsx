@@ -31,7 +31,7 @@ function TwitterActiveButton(props: IPropsTwitterActiveButton) {
           <IconComponent name={props?.icon} />
         </ActionButton>
       </PopoverTrigger>
-      <PopoverContent hideWhenDetached className="richtext-w-full" align="start" side="bottom">
+      <PopoverContent hideWhenDetached className="w-full" align="start" side="bottom">
         <FormEditLinkTwitter editor={props.editor} onSetLink={onSetLink} />
       </PopoverContent>
     </Popover>

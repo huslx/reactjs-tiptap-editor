@@ -19,12 +19,12 @@ function EmojiPickerWrap({ onSelectEmoji, children }: IProps) {
       </PopoverTrigger>
 
       <PopoverContent align="start"
-        className="richtext-size-full richtext-p-2"
+        className="size-full p-2"
         hideWhenDetached
         side="bottom"
       >
         <EmojiPicker
-          className="!richtext-h-[342px]"
+          className="!h-[342px]"
           onEmojiSelect={({ emoji }) => {
             onSelectEmoji(emoji);
           }}

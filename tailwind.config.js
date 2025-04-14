@@ -7,7 +7,6 @@ export default {
   corePlugins: {
     preflight: false,
   },
-  prefix: 'richtext-',
 
   content: [
     './pages/**/*.{ts,tsx}',

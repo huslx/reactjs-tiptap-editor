@@ -109,7 +109,7 @@ export function NodeViewAttachment({ editor, node, updateAttributes, deleteNode,
         <div className={clsx(styles.wrap, 'render-wrapper')}
           onClick={selectFile}
         >
-          <div className="richtext-flex richtext-items-center richtext-gap-[4px]">
+          <div className="flex items-center gap-[4px]">
             <span>
               {getFileTypeIcon(fileType)}
             </span>

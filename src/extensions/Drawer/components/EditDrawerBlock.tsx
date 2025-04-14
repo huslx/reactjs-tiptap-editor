@@ -197,14 +197,14 @@ export function EditDrawerBlock ({ editor, attrs, extension }: any) {
         />
       </DialogTrigger>
 
-      <DialogContent className="richtext-z-[99999] !richtext-max-w-[1300px]">
+      <DialogContent className="z-[99999] !max-w-[1300px]">
         <DialogTitle>
           Edit Drawer
         </DialogTitle>
 
         <div style={{ height: '100%', borderWidth: 1, background: 'white', position: 'relative' }}>
           <div
-            className='richtext-size-full'
+            className='size-full'
             id='easydrawer'
           >
           </div>

@@ -63,7 +63,7 @@ export function NodeViewCodeBlock({ editor, node: { attrs }, updateAttributes, e
               <SelectValue placeholder="Language" />
             </SelectTrigger>
 
-            <SelectContent className="richtext-max-h-60 richtext-overflow-y-auto">
+            <SelectContent className="max-h-60 overflow-y-auto">
               <SelectItem value="auto">
                 Auto
               </SelectItem>

@@ -68,13 +68,13 @@ function Toolbar({ editor, disabled, toolbar }: ToolbarComponentProps) {
   const containerDom = (innerContent: React.ReactNode) => {
     return (
       <div
-        className="richtext-toolbar richtext-px-1 richtext-py-2 !richtext-border-b"
+        className="toolbar px-1 py-2 !border-b"
         style={{
           pointerEvents: disabled ? 'none' : 'auto',
           opacity: disabled ? 0.5 : 1,
         }}
       >
-        <div className="richtext-relative richtext-flex richtext-flex-wrap richtext-h-auto richtext-gap-y-1 richtext-gap-x-1">
+        <div className="relative flex flex-wrap h-auto gap-y-1 gap-x-1">
           {innerContent}
         </div>
       </div>
@@ -85,15 +85,15 @@ function Toolbar({ editor, disabled, toolbar }: ToolbarComponentProps) {
     const ButtonComponent = item.button.component;
 
     return (
-      <div className="richtext-flex richtext-items-center" key={`toolbar-item-${key}`}>
-        {item?.spacer && <Separator orientation="vertical" className="!richtext-h-[16px] !richtext-mx-[10px]" />}
+      <div className="flex items-center" key={`toolbar-item-${key}`}>
+        {item?.spacer && <Separator orientation="vertical" className="!h-[16px] !mx-[10px]" />}
 
         <ButtonComponent
           {...item.button.componentProps}
           disabled={disabled || item?.button?.componentProps?.disabled}
         />
 
-        {item?.divider && <Separator orientation="vertical" className="!richtext-h-auto !richtext-mx-2" />}
+        {item?.divider && <Separator orientation="vertical" className="!h-auto !mx-2" />}
       </div>
     );
   });

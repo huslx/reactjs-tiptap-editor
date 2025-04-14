@@ -16,9 +16,9 @@ function CharactorCount({ editor, extensions }: IPropsCharactorCount) {
 
   if (!limit) {
     return (
-      <div className="richtext-flex richtext-items-center richtext-justify-between richtext-p-3 richtext-border-t">
-        <div className="richtext-flex richtext-flex-col">
-          <div className="richtext-flex richtext-justify-end richtext-gap-3 richtext-text-sm">
+      <div className="flex items-center justify-between p-3 border-t">
+        <div className="flex flex-col">
+          <div className="flex justify-end gap-3 text-sm">
             <span>
               {(editor as any).storage.characterCount.characters()}
               {' '}
@@ -31,9 +31,9 @@ function CharactorCount({ editor, extensions }: IPropsCharactorCount) {
   }
 
   return (
-    <div className="richtext-flex richtext-items-center richtext-justify-between richtext-p-3 richtext-border-t">
-      <div className="richtext-flex richtext-flex-col">
-        <div className="richtext-flex richtext-justify-end richtext-gap-3 richtext-text-sm">
+    <div className="flex items-center justify-between p-3 border-t">
+      <div className="flex flex-col">
+        <div className="flex justify-end gap-3 text-sm">
           <span>
             {editor.storage.characterCount.characters()}
             /

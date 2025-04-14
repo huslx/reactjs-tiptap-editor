@@ -57,12 +57,12 @@ function ActionMoreButton(props: IPropsActionMoreButton) {
         disabled={props?.disabled}
       >
         <ActionButton
-          customClass="!richtext-w-12 richtext-h-12"
+          customClass="!w-12 h-12"
           disabled={props?.disabled}
           icon={props?.icon}
           tooltip={props?.tooltip}
         >
-          <MenuDown className="richtext-size-3 richtext-text-gray-500" />
+          <MenuDown className="size-3 text-gray-500" />
         </ActionButton>
       </DropdownMenuTrigger>
 
@@ -71,18 +71,18 @@ function ActionMoreButton(props: IPropsActionMoreButton) {
           return (
             <DropdownMenuCheckboxItem
               checked={active.title === item.title}
-              className="richtext-flex richtext-items-center richtext-gap-3"
+              className="flex items-center gap-3"
               key={`more-mark-${index}`}
               onClick={item.action}
             >
               <IconComponent name={item?.icon} />
 
-              <span className="richtext-ml-1">
+              <span className="ml-1">
                 {item.title}
               </span>
 
               {!!item?.shortcutKeys && (
-                <span className="richtext-ml-auto richtext-text-xs richtext-tracking-widest richtext-opacity-60">
+                <span className="ml-auto text-xs tracking-widest opacity-60">
                   {getShortcutKeys(item.shortcutKeys)}
                 </span>
               )}

@@ -66,19 +66,19 @@ function KatexActiveButton({ editor, ...props }: any) {
       </PopoverTrigger>
 
       <PopoverContent align="start"
-        className="richtext-size-full richtext-p-2"
+        className="size-full p-2"
         hideWhenDetached
         side="bottom"
       >
-        <Label className="richtext-mb-[6px]">
+        <Label className="mb-[6px]">
           {t('editor.formula.dialog.text')}
         </Label>
 
-        <div className="richtext-mb-[16px] richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-          <div className="richtext-relative richtext-w-full richtext-max-w-sm">
+        <div className="mb-[16px] flex w-full max-w-sm items-center gap-1.5">
+          <div className="relative w-full max-w-sm">
             <Textarea
               autoFocus
-              className="richtext-w-full"
+              className="w-full"
               defaultValue={text}
               onChange={e => setCurrentValue(e.target.value)}
               placeholder="Text"
@@ -90,13 +90,13 @@ function KatexActiveButton({ editor, ...props }: any) {
         </div>
 
         {previewContent && (
-          <div className="richtext-my-[10px] richtext-max-w-[286px] richtext-overflow-auto richtext-whitespace-nowrap richtext-rounded-[6px] !richtext-border richtext-p-[10px]">
+          <div className="my-[10px] max-w-[286px] overflow-auto whitespace-nowrap rounded-[6px] !border p-[10px]">
             {previewContent}
           </div>
         )}
 
-        <div className="richtext-flex richtext-items-center richtext-justify-between richtext-gap-[6px]">
-          <Button className="richtext-flex-1"
+        <div className="flex items-center justify-between gap-[6px]">
+          <Button className="flex-1"
             onClick={submit}
           >
             Submit

@@ -123,16 +123,16 @@ function CommandsList(props: any, ref: any) {
 
   return (
     <div
-      className="richtext-mb-8 richtext-max-h-[min(80vh,24rem)] richtext-flex-wrap richtext-overflow-auto richtext-rounded-lg !richtext-border !richtext-border-neutral-200 !richtext-bg-white richtext-p-1 !richtext-text-black richtext-shadow-sm dark:!richtext-border-neutral-800 dark:!richtext-bg-black"
+      className="mb-8 max-h-[min(80vh,24rem)] flex-wrap overflow-auto rounded-lg !border !border-neutral-200 !bg-white p-1 !text-black shadow-sm dark:!border-neutral-800 dark:!bg-black"
       ref={scrollContainer}
     >
       {props?.items?.length
         ? (
-          <div className="richtext-grid richtext-min-w-48 richtext-grid-cols-1 richtext-gap-0.5">
+          <div className="grid min-w-48 grid-cols-1 gap-0.5">
             {props?.items?.map((group: any, groupIndex: any) => {
               return (
                 <Fragment key={`slash-${group.title}`}>
-                  <div className="richtext-col-[1/-1] richtext-mx-2 richtext-mt-2 richtext-select-none richtext-text-[0.65rem] richtext-font-semibold richtext-uppercase richtext-tracking-wider !richtext-text-neutral-500 first:richtext-mt-0.5">
+                  <div className="col-[1/-1] mx-2 mt-2 select-none text-[0.65rem] font-semibold uppercase tracking-wider !text-neutral-500 first:mt-0.5">
                     {group.title}
                   </div>
 
@@ -142,17 +142,17 @@ function CommandsList(props: any, ref: any) {
                         key={`command-${commandIndex}`}
                         onClick={() => createCommandClickHandler(groupIndex, commandIndex)}
                         ref={el => setActiveItemRef(groupIndex, commandIndex, el)}
-                        className={cn('richtext-flex richtext-items-center richtext-gap-3 richtext-px-2 richtext-py-1.5 richtext-text-sm !richtext-text-neutral-800 dark:!richtext-text-neutral-200 richtext-text-left richtext-w-full richtext-rounded-sm richtext-outline-none richtext-transition-colors !richtext-bg-transparent hover:!richtext-bg-accent ', {
+                        className={cn('flex items-center gap-3 px-2 py-1.5 text-sm !text-neutral-800 dark:!text-neutral-200 text-left w-full rounded-sm outline-none transition-colors !bg-transparent hover:!bg-accent ', {
                           'slash-command-active': selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex,
                         })}
                       >
                         {command.iconUrl && <img alt=""
-                          className="richtext-size-6"
+                          className="size-6"
                           src={command.iconUrl}
                         />}
 
                         {command.iconName && (
-                          <IconComponent className="!richtext-mr-1 !richtext-text-lg"
+                          <IconComponent className="!mr-1 !text-lg"
                             name={command.iconName}
                           />
                         )}
@@ -167,8 +167,8 @@ function CommandsList(props: any, ref: any) {
           </div>
         )
         : (
-          <div className="richtext-p-3">
-            <span className="richtext-text-xs richtext-text-gray-800 dark:richtext-text-gray-100">
+          <div className="p-3">
+            <span className="text-xs text-gray-800 dark:text-gray-100">
               {t('editor.slash.empty')}
             </span>
           </div>

@@ -47,13 +47,13 @@ export const SizeSetter: React.FC<IProps> = ({ width, maxWidth, height, onOk, ch
 
       <PopoverContent>
         <div style={containerStyle}>
-          <form className="richtext-flex richtext-flex-col richtext-gap-2" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <Label className="mb-[6px]">
               Width
             </Label>
 
-            <div className="richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-              <div className="richtext-relative richtext-items-center richtext-w-full richtext-max-w-sm">
+            <div className="flex w-full max-w-sm items-center gap-1.5">
+              <div className="relative items-center w-full max-w-sm">
                 <Input
                   type="number"
                   value={form.width}
@@ -67,8 +67,8 @@ export const SizeSetter: React.FC<IProps> = ({ width, maxWidth, height, onOk, ch
               Max Width
             </Label>
 
-            <div className="richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-              <div className="richtext-relative richtext-items-center richtext-w-full richtext-max-w-sm">
+            <div className="flex w-full max-w-sm items-center gap-1.5">
+              <div className="relative items-center w-full max-w-sm">
                 <Input
                   type="number"
                   value={form.maxWidth}
@@ -80,8 +80,8 @@ export const SizeSetter: React.FC<IProps> = ({ width, maxWidth, height, onOk, ch
             <Label className="mb-[6px]">
               Height
             </Label>
-            <div className="richtext-flex richtext-w-full richtext-max-w-sm richtext-items-center richtext-gap-1.5">
-              <div className="richtext-relative richtext-items-center richtext-w-full richtext-max-w-sm">
+            <div className="flex w-full max-w-sm items-center gap-1.5">
+              <div className="relative items-center w-full max-w-sm">
                 <Input
                   type="number"
                   value={form.height}
@@ -91,7 +91,7 @@ export const SizeSetter: React.FC<IProps> = ({ width, maxWidth, height, onOk, ch
               </div>
             </div>
 
-            <Button type="submit" className="richtext-self-end richtext-mt-2">
+            <Button type="submit" className="self-end mt-2">
               {t('editor.link.dialog.button.apply')}
             </Button>
           </form>

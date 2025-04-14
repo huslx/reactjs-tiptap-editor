@@ -58,7 +58,7 @@ function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
         />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="richtext-max-h-96 richtext-w-32 richtext-overflow-y-auto">
+      <DropdownMenuContent className="max-h-96 w-32 overflow-y-auto">
         {props?.items?.map((item: any, index) => {
           return (
             <DropdownMenuCheckboxItem
@@ -66,7 +66,7 @@ function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
               key={`font-size-${index}`}
               onClick={item.action}
             >
-              <div className="richtext-ml-1 richtext-h-full">
+              <div className="ml-1 h-full">
                 {item.title}
               </div>
             </DropdownMenuCheckboxItem>

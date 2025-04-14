@@ -65,7 +65,7 @@ function HeadingButton(props: Props) {
         />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="richtext-w-full">
+      <DropdownMenuContent className="w-full">
         {props?.items?.map((item: any, index) => {
           return (
             <Fragment key={`heading-k-${index}`}>
@@ -73,12 +73,12 @@ function HeadingButton(props: Props) {
                 checked={active?.title === item.title}
                 onClick={item.action}
               >
-                <div className={`heading- richtext-ml-1 richtext-h-full${item.level}`}>
+                <div className={`heading- ml-1 h-full${item.level}`}>
                   {item.title}
                 </div>
 
                 {!!item?.shortcutKeys?.length && (
-                  <DropdownMenuShortcut className="richtext-pl-4">
+                  <DropdownMenuShortcut className="pl-4">
                     {item?.shortcutKeys?.map((item: any) => getShortcutKey(item)).join(' ')}
                   </DropdownMenuShortcut>
                 )}

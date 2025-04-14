@@ -112,7 +112,7 @@ function ActionVideoButton(props: any) {
             (uploadOptions?.resourceVideo === 'both' || uploadOptions?.resourceVideo === 'upload') ? 'upload' : 'link'
           }
         >
-          <TabsList className="richtext-grid richtext-w-full richtext-grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2">
             {(uploadOptions?.resourceVideo === 'both' || uploadOptions?.resourceVideo === 'upload') && (
               <TabsTrigger value="upload">
                 {t('editor.video.dialog.tab.upload')}
@@ -127,8 +127,8 @@ function ActionVideoButton(props: any) {
           </TabsList>
 
           <TabsContent value="upload">
-            <div className="richtext-flex richtext-items-center richtext-gap-[10px]">
-              <Button className="richtext-mt-1 richtext-w-full"
+            <div className="flex items-center gap-[10px]">
+              <Button className="mt-1 w-full"
                 onClick={handleClick}
                 size="sm"
               >
@@ -150,7 +150,7 @@ function ActionVideoButton(props: any) {
 
           <TabsContent value="link">
             <form onSubmit={handleLink}>
-              <div className="richtext-flex richtext-items-center richtext-gap-2">
+              <div className="flex items-center gap-2">
                 <Input
                   autoFocus
                   placeholder={t('editor.video.dialog.placeholder')}
@@ -178,7 +178,7 @@ function ActionVideoButton(props: any) {
               </div>
             </form>
 
-            {error && <div className="richtext-my-[5px] richtext-text-red-500">
+            {error && <div className="my-[5px] text-red-500">
               {error}
             </div>}
           </TabsContent>

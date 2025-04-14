@@ -30,7 +30,7 @@ function ItemA({ item, disabled, editor }: any) {
     <Fragment>
       {item.type === 'divider'
         ? (
-          <Separator className="!richtext-mx-1 !richtext-my-2 !richtext-h-[16px]"
+          <Separator className="!mx-1 !my-2 !h-[16px]"
             orientation="vertical"
           />
         )
@@ -92,8 +92,8 @@ function BubbleMenuImage(props: IPropsBubbleMenu) {
       >
         {items?.length
           ? (
-            <div className="richtext-pointer-events-auto richtext-w-auto richtext-select-none richtext-rounded-sm !richtext-border richtext-border-neutral-200 richtext-bg-background richtext-px-3 richtext-py-2 richtext-shadow-sm richtext-transition-all dark:richtext-border-neutral-800">
-              <div className="richtext-relative richtext-flex richtext-h-[26px] richtext-flex-nowrap richtext-items-center richtext-justify-start richtext-whitespace-nowrap">
+            <div className="pointer-events-auto w-auto select-none rounded-sm !border border-neutral-200 bg-background px-3 py-2 shadow-sm transition-all dark:border-neutral-800">
+              <div className="relative flex h-[26px] flex-nowrap items-center justify-start whitespace-nowrap">
                 {items?.map((item: any, key: any) => {
                   return (
                     <ItemA
@@ -150,8 +150,8 @@ function BubbleMenuImageGif(props: IPropsBubbleMenu) {
       >
         {items?.length
           ? (
-            <div className="richtext-pointer-events-auto richtext-w-auto richtext-select-none richtext-rounded-sm !richtext-border richtext-border-neutral-200 richtext-bg-background richtext-px-3 richtext-py-2 richtext-shadow-sm richtext-transition-all dark:richtext-border-neutral-800">
-              <div className="richtext-relative richtext-flex richtext-h-[26px] richtext-flex-nowrap richtext-items-center richtext-justify-start richtext-whitespace-nowrap">
+            <div className="pointer-events-auto w-auto select-none rounded-sm !border border-neutral-200 bg-background px-3 py-2 shadow-sm transition-all dark:border-neutral-800">
+              <div className="relative flex h-[26px] flex-nowrap items-center justify-start whitespace-nowrap">
                 {items?.map((item: any, key: any) => {
                   return (
                     <ItemA
@@ -209,8 +209,8 @@ function BubbleMenuVideo(props: IPropsBubbleMenu) {
       >
         {items?.length
           ? (
-            <div className="richtext-pointer-events-auto richtext-w-auto richtext-select-none richtext-rounded-sm !richtext-border richtext-border-neutral-200 richtext-bg-background richtext-px-3 richtext-py-2 richtext-shadow-sm richtext-transition-all dark:richtext-border-neutral-800">
-              <div className="richtext-relative richtext-flex richtext-h-[26px] richtext-flex-nowrap richtext-items-center richtext-justify-start richtext-whitespace-nowrap">
+            <div className="pointer-events-auto w-auto select-none rounded-sm !border border-neutral-200 bg-background px-3 py-2 shadow-sm transition-all dark:border-neutral-800">
+              <div className="relative flex h-[26px] flex-nowrap items-center justify-start whitespace-nowrap">
                 {items?.map((item: any, key: any) => {
                   return (
                     <ItemA

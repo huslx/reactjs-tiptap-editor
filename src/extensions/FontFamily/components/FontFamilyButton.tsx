@@ -68,7 +68,7 @@ function FontFamilyButton(props: Props) {
         />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="richtext-w-full">
+      <DropdownMenuContent className="w-full">
         {props?.items?.map((item: any, index) => {
           const style
             = item.font === t('editor.fontFamily.default.tooltip') ? {} : { fontFamily: item.font };
@@ -78,7 +78,7 @@ function FontFamilyButton(props: Props) {
               <DropdownMenuCheckboxItem checked={active?.font === item.font}
                 onClick={item.action}
               >
-                <div className="richtext-ml-1 richtext-h-full"
+                <div className="ml-1 h-full"
                   style={style}
                 >
                   {item.font}

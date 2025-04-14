@@ -121,7 +121,7 @@ export function ImageCropper({ editor, imageInline, onClose }: any) {
 
   return (
     <>
-      <Button className="richtext-mt-1 richtext-w-full"
+      <Button className="mt-1 w-full"
         onClick={handleClick}
         size="sm"
       >
@@ -139,7 +139,7 @@ export function ImageCropper({ editor, imageInline, onClose }: any) {
           <div>
             {urlUpload.src && (
               <ReactCrop
-                className="richtext-w-full"
+                className="w-full"
                 crop={crop}
                 onChange={c => setCrop(c)}
                 onComplete={c => onCropComplete(c)}
@@ -165,17 +165,17 @@ export function ImageCropper({ editor, imageInline, onClose }: any) {
             >
               {t('editor.imageUpload.cancel')}
 
-              <IconComponent className="richtext-ml-[4px]"
+              <IconComponent className="ml-[4px]"
                 name="Trash2"
               />
             </Button>
 
-            <Button className="richtext-w-fit"
+            <Button className="w-fit"
               onClick={onCrop}
             >
               {t('editor.imageUpload.crop')}
 
-              <IconComponent className="richtext-ml-[4px]"
+              <IconComponent className="ml-[4px]"
                 name="Crop"
               />
             </Button>
