@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import type { Editor } from '@tiptap/core';
 import { isActive } from '@tiptap/core';
@@ -7,14 +7,14 @@ import { BubbleMenu } from '@tiptap/react';
 import type { GetReferenceClientRect } from 'tippy.js';
 import { sticky } from 'tippy.js';
 
-import { ActionButton, type ActionButtonProps, Separator } from '@/components';
+import { ActionButton, type ActionButtonProps, getBubbleText, ItemA, Separator } from '@/components';
 import HighlightActionButton from '@/extensions/Highlight/components/HighlightActionButton';
 import {
-  type ShouldShowProps,
   isColumnGripSelected,
   isRowGripSelected,
 } from '@/extensions/Table/utils';
 import { useLocale } from '@/locales';
+import { type ShouldShowProps } from '@/types';
 
 import BubbleMenuContent from './BubbleMenuContent';
 
@@ -22,6 +22,7 @@ export interface TableBubbleMenuProps {
   editor: Editor;
   disabled?: boolean;
   actions?: ActionButtonProps[];
+  items?: string[]
 }
 
 function TableRowBubbleMenu ({ editor, disabled }: TableBubbleMenuProps) {
@@ -176,7 +177,7 @@ function TableColBubbleMenu({ editor, disabled }: TableBubbleMenuProps) {
   );
 }
 
-function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps) {
+function TableMainBubbleMenu({ editor, disabled, actions, ...props }: TableBubbleMenuProps) {
 
   const shouldSelectionShow = ({ editor, view, state, from }: ShouldShowProps) => {
     const { selection } = editor.view.state;
@@ -204,7 +205,7 @@ function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps
   const shouldShow = (showProps: ShouldShowProps) => {
     return shouldActiveShow(showProps) && !shouldSelectionShow(showProps);
   };
-  const { t } = useLocale();
+  const { t, lang } = useLocale();
 
   function onMergeCell() {
     editor.chain().focus().mergeCells().run();
@@ -242,6 +243,15 @@ function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps
     return rect;
   };
 
+  const items = useMemo(() => {
+    if (disabled || !editor) {
+      return [];
+    }
+
+    return getBubbleText(editor, t, props.items || []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [disabled, editor, props.items, lang, t]);
+
   if(disabled) {
     return null;
   }
@@ -267,9 +277,24 @@ function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps
         {actions && (
           <>
             {actions.map((item, i) => (
-              <ActionButton key={i}
-                {...item}
-              />
+              <ActionButton key={i} {...item} />
+            ))}
+
+            <Separator
+              className="!mx-1 !my-2 !h-[16px]"
+              orientation="vertical"
+            />
+          </>
+        )}
+
+        {props.items && (
+          <>
+            {items.map((item, i) => (
+              <ItemA
+                key={i}
+                disabled={disabled}
+                editor={editor}
+                item={item} />
             ))}
 
             <Separator
@@ -299,10 +324,7 @@ function TableMainBubbleMenu({ editor, disabled, actions }: TableBubbleMenuProps
           }}
         />
 
-        <Separator
-          className="!mx-1 !my-2 !h-[16px]"
-          orientation="vertical"
-        />
+        <Separator className="!mx-1 !my-2 !h-[16px]" orientation="vertical" />
 
         <HighlightActionButton
           action={onSetCellBackground}

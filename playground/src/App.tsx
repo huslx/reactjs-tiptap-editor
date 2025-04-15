@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 
-import RichTextEditor from 'reactjs-tiptap-editor'
+import RichTextEditor from 'reactjs-tiptap-editor';
 
-import { locale } from 'reactjs-tiptap-editor/locale-bundle'
+import { locale } from 'reactjs-tiptap-editor/locale-bundle';
 
 import {
   Attachment,
@@ -50,23 +50,23 @@ import {
   Twitter,
   Underline,
   Video,
-  Drawer
-} from 'reactjs-tiptap-editor/extension-bundle'
+  Drawer,
+} from 'reactjs-tiptap-editor/extension-bundle';
 
-import 'reactjs-tiptap-editor/style.css'
-import 'katex/dist/katex.min.css'
-import 'easydrawer/styles.css'
+import 'reactjs-tiptap-editor/style.css';
+import 'katex/dist/katex.min.css';
+import 'easydrawer/styles.css';
 
 function convertBase64ToBlob(base64: string) {
-  const arr = base64.split(',')
-  const mime = arr[0].match(/:(.*?);/)![1]
-  const bstr = atob(arr[1])
-  let n = bstr.length
-  const u8arr = new Uint8Array(n)
+  const arr = base64.split(',');
+  const mime = arr[0].match(/:(.*?);/)![1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
   while (n--) {
-    u8arr[n] = bstr.charCodeAt(n)
+    u8arr[n] = bstr.charCodeAt(n);
   }
-  return new Blob([u8arr], { type: mime })
+  return new Blob([u8arr], { type: mime });
 }
 
 const extensions = [
@@ -111,18 +111,18 @@ const extensions = [
     upload: (files: File) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(URL.createObjectURL(files))
-        }, 500)
-      })
+          resolve(URL.createObjectURL(files));
+        }, 500);
+      });
     },
   }),
   Video.configure({
     upload: (files: File) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(URL.createObjectURL(files))
-        }, 500)
-      })
+          resolve(URL.createObjectURL(files));
+        }, 500);
+      });
     },
   }),
   ImageGif.configure({
@@ -141,11 +141,11 @@ const extensions = [
   ExportPdf.configure({ spacer: true }),
   ImportWord.configure({
     upload: (files: File[]) => {
-      const f = files.map(file => ({
+      const f = files.map((file) => ({
         src: URL.createObjectURL(file),
         alt: file.name,
-      }))
-      return Promise.resolve(f)
+      }));
+      return Promise.resolve(f);
     },
   }),
   ExportWord,
@@ -155,70 +155,70 @@ const extensions = [
   Attachment.configure({
     upload: (file: any) => {
       // fake upload return base 64
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
 
       return new Promise((resolve) => {
         setTimeout(() => {
-          const blob = convertBase64ToBlob(reader.result as string)
-          resolve(URL.createObjectURL(blob))
-        }, 300)
-      })
+          const blob = convertBase64ToBlob(reader.result as string);
+          resolve(URL.createObjectURL(blob));
+        }, 300);
+      });
     },
   }),
   Mermaid.configure({
     upload: (file: any) => {
       // fake upload return base 64
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
 
       return new Promise((resolve) => {
         setTimeout(() => {
-          const blob = convertBase64ToBlob(reader.result as string)
-          resolve(URL.createObjectURL(blob))
-        }, 300)
-      })
+          const blob = convertBase64ToBlob(reader.result as string);
+          resolve(URL.createObjectURL(blob));
+        }, 300);
+      });
     },
   }),
   Drawer.configure({
     upload: (file: any) => {
       // fake upload return base 64
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
 
       return new Promise((resolve) => {
         setTimeout(() => {
-          const blob = convertBase64ToBlob(reader.result as string)
-          resolve(URL.createObjectURL(blob))
-        }, 300)
-      })
+          const blob = convertBase64ToBlob(reader.result as string);
+          resolve(URL.createObjectURL(blob));
+        }, 300);
+      });
     },
   }),
   Twitter,
-]
+];
 
-const DEFAULT = ``
+const DEFAULT = ``;
 
 function debounce(func: any, wait: number) {
-  let timeout: NodeJS.Timeout
+  let timeout: NodeJS.Timeout;
   return function (...args: any[]) {
-    clearTimeout(timeout)
+    clearTimeout(timeout);
     // @ts-ignore
-    timeout = setTimeout(() => func.apply(this, args), wait)
-  }
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
 }
 
 function App() {
-  const [content, setContent] = useState(DEFAULT)
-  const [theme, setTheme] = useState('light')
-  const [disable, setDisable] = useState(false)
+  const [content, setContent] = useState(DEFAULT);
+  const [theme, setTheme] = useState('light');
+  const [disable, setDisable] = useState(false);
 
   const onValueChange = useCallback(
     debounce((value: any) => {
-      setContent(value)
+      setContent(value);
     }, 300),
-    [],
-  )
+    []
+  );
   return (
     <div
       className="p-[24px] flex flex-col w-full max-w-screen-lg gap-[24px] mx-[auto] my-0"
@@ -235,15 +235,30 @@ function App() {
           marginBottom: 10,
         }}
       >
-        <button type="button" onClick={() => locale.setLang('vi')}>Vietnamese</button>
-        <button type="button" onClick={() => locale.setLang('en')}>English</button>
-        <button type="button" onClick={() => locale.setLang('zh_CN')}>Chinese</button>
-        <button type="button" onClick={() => locale.setLang('pt_BR')}>Português</button>
-        <button type="button" onClick={() => locale.setLang('hu_HU')}>Hungarian</button>
-        <button type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+        <button type="button" onClick={() => locale.setLang('vi')}>
+          Vietnamese
+        </button>
+        <button type="button" onClick={() => locale.setLang('en')}>
+          English
+        </button>
+        <button type="button" onClick={() => locale.setLang('zh_CN')}>
+          Chinese
+        </button>
+        <button type="button" onClick={() => locale.setLang('pt_BR')}>
+          Português
+        </button>
+        <button type="button" onClick={() => locale.setLang('hu_HU')}>
+          Hungarian
+        </button>
+        <button
+          type="button"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
           {theme === 'dark' ? 'Light' : 'Dark'}
         </button>
-        <button type="button" onClick={() => setDisable(!disable)}>{disable ? 'Editable' : 'Readonly'}</button>
+        <button type="button" onClick={() => setDisable(!disable)}>
+          {disable ? 'Editable' : 'Readonly'}
+        </button>
       </div>
 
       <RichTextEditor
@@ -255,7 +270,22 @@ function App() {
         disabled={disable}
         bubbleMenu={{
           textConfig: {
-            items: ['bold', 'fontSize']
+            items: [
+              'fontSize',
+              'bold',
+              'italic',
+              'underline',
+              'strike',
+              'code',
+              'link',
+              'divider',
+              'color',
+              'highlight',
+              'textAlign',
+            ],
+          },
+          tableConfig: {
+            items: ['image']
           }
         }}
       />
@@ -271,7 +301,7 @@ function App() {
         />
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -6,6 +6,7 @@ import { BubbleMenu } from '@tiptap/react';
 
 import { Separator, getBubbleText } from '@/components';
 import { useLocale } from '@/locales';
+import { type ShouldShowProps } from '@/types';
 
 export interface BubbleMenuTextProps {
   editor: Editor
@@ -16,11 +17,10 @@ export interface BubbleMenuTextProps {
 const tippyOptions = {
   maxWidth: 'auto',
   zIndex: 20,
-  appendTo: 'parent',
   moveTransition: 'transform 0.1s ease-out',
 };
 
-function ItemA({ item, disabled, editor }: any) {
+export function ItemA({ item, disabled, editor }: any) {
   const Comp = item.component;
 
   if (!Comp) {
@@ -39,7 +39,7 @@ function ItemA({ item, disabled, editor }: any) {
 function BubbleMenuText(props: BubbleMenuTextProps) {
   const { t, lang } = useLocale();
 
-  const shouldShow = ({ editor }: any) => {
+  const shouldShow = ({ editor }: ShouldShowProps) => {
     const { selection } = editor.view.state;
     const { $from, to } = selection;
 

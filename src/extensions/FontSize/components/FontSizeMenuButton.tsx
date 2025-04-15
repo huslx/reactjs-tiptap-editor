@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 
 import {
   ActionMenuButton,
@@ -32,6 +32,7 @@ interface IPropsFontSizeMenuButton {
 
 function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
   const { t } = useLocale();
+  const divRef = useRef<HTMLDivElement>(null);
 
   const active = useMemo(() => {
     const find: any = (props.items || []).find((k: any) => k.isActive());
@@ -47,18 +48,21 @@ function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild
-        disabled={props?.disabled}
-      >
-        <ActionMenuButton
-          disabled={props?.disabled}
-          icon="MenuDown"
-          title={active?.title}
-          tooltip={`${props?.tooltip}`}
-        />
+      <DropdownMenuTrigger asChild disabled={props?.disabled}>
+        <div ref={divRef}>
+          <ActionMenuButton
+            disabled={props?.disabled}
+            icon="MenuDown"
+            title={active?.title}
+            tooltip={`${props?.tooltip}`}
+          />
+        </div>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="max-h-96 w-32 overflow-y-auto">
+      <DropdownMenuContent
+        container={divRef.current as any}
+        className="max-h-[40vh] w-32 overflow-y-auto"
+      >
         {props?.items?.map((item: any, index) => {
           return (
             <DropdownMenuCheckboxItem
@@ -66,9 +70,7 @@ function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
               key={`font-size-${index}`}
               onClick={item.action}
             >
-              <div className="ml-1 h-full">
-                {item.title}
-              </div>
+              <div className="ml-1 h-full">{item.title}</div>
             </DropdownMenuCheckboxItem>
           );
         })}

@@ -2,6 +2,8 @@ import type { Editor as CoreEditor, Extension, JSONContent } from '@tiptap/core'
 import type { Editor } from '@tiptap/react';
 
 import { type ActionButtonProps } from './components';
+import { EditorView } from '@tiptap/pm/view';
+import { EditorState } from '@tiptap/pm/state';
 
 export type { Editor, JSONContent } from '@tiptap/core';
 
@@ -128,6 +130,7 @@ export interface BubbleMenuConfig {
    * custom menu actions
    */
   actions?: ActionButtonProps[]
+  items?: string[]
   
 }
 
@@ -256,4 +259,13 @@ export interface ToolbarProps {
 export interface NameValueOption<T = string> {
   name: string
   value: T
+}
+
+export interface ShouldShowProps {
+  editor: Editor;
+  view: EditorView;
+  state?: EditorState;
+  oldState?: EditorState;
+  from?: number;
+  to?: number;
 }

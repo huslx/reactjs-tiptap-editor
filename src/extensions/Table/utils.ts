@@ -6,15 +6,6 @@ import { type EditorView } from '@tiptap/pm/view';
 
 import Table from './Table';
 
-export interface ShouldShowProps {
-  editor: Editor;
-  view: EditorView;
-  state?: EditorState;
-  oldState?: EditorState;
-  from?: number;
-  to?: number;
-}
-
 export function isRectSelected (rect: any) {
   return (selection: CellSelection) => {
     const map = TableMap.get(selection.$anchorCell.node(-1));
