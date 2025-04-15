@@ -70,7 +70,9 @@ function FontSizeMenuButton(props: IPropsFontSizeMenuButton) {
               key={`font-size-${index}`}
               onClick={item.action}
             >
-              <div className="ml-1 h-full">{item.title}</div>
+              <div className="ml-1 h-full">
+                {item.title}
+              </div>
             </DropdownMenuCheckboxItem>
           );
         })}
