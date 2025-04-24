@@ -2,7 +2,6 @@ import type { Editor } from '@tiptap/core';
 
 import { BubbleMenuImage, BubbleMenuImageGif, BubbleMenuLink, BubbleMenuText, BubbleMenuVideo, ColumnsBubbleMenu, ContentMenu, TableBubbleMenu } from '@/components';
 import { BubbleMenuDrawer } from '@/components/menus/components/BubbleMenuDrawer';
-import { BubbleMenuExcalidraw } from '@/components/menus/components/BubbleMenuExcalidraw';
 import { BubbleMenuIframe } from '@/components/menus/components/BubbleMenuIframe';
 import BubbleMenuKatex from '@/components/menus/components/BubbleMenuKatex';
 import { BubbleMenuMermaid } from '@/components/menus/components/BubbleMenuMermaid';
@@ -53,10 +52,6 @@ export function BubbleMenu({ editor, disabled, bubbleMenu }: BubbleMenuComponent
     extensionsNames.includes('katex') && !bubbleMenu?.katexConfig?.hidden ? <BubbleMenuKatex disabled={disabled}
       editor={editor}
       key="katex"
-    /> : null,
-    extensionsNames.includes('excalidraw') && !bubbleMenu?.excalidrawConfig?.hidden ? <BubbleMenuExcalidraw disabled={disabled}
-      editor={editor}
-      key="excalidraw"
     /> : null,
     extensionsNames.includes('mermaid') && !bubbleMenu?.mermaidConfig?.hidden ? <BubbleMenuMermaid disabled={disabled}
       editor={editor}

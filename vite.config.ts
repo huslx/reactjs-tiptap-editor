@@ -75,16 +75,15 @@ export default defineConfig(({ mode }) => {
             if (assetInfo.name == "reactjs-tiptap-editor-pro.css") return "style.css";
             return assetInfo.name;
           },
-          manualChunks(id) {
-            if (id.includes('@tiptap')) {
-              return 'tiptap'
-            }
-            if (id.includes('node_modules')) {
-              return 'vendor'
+          manualChunks: (id) => {
+            if (id.includes('lucide-react')){
+              return 'lucide-react'
             }
           },
+          experimentalMinChunkSize: 500_000,
         },
-        external: ['react', 'react-dom', 'react/jsx-runtime', 'katex', 'shiki', 'docx', '@radix-ui/react-dropdown-menu', '@radix-ui/react-icons', '@radix-ui/react-label', '@radix-ui/react-popover', '@radix-ui/react-separator', '@radix-ui/react-slot', '@radix-ui/react-switch', '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-toggle', '@radix-ui/react-tooltip', '@radix-ui/react-select', '@radix-ui/react-checkbox', 'react-colorful', 'scroll-into-view-if-needed', 'tippy.js', 'lucide-react', 'prosemirror-docx', 're-resizable', '@excalidraw/excalidraw', '@radix-ui/react-dialog', 'react-image-crop', 'mermaid', 'easydrawer', 'frimousse'],
+        treeshake: "smallest",
+        external: ['react', 'react-dom', 'react/jsx-runtime', 'katex', 'shiki', 'docx', '@radix-ui/react-dropdown-menu', '@radix-ui/react-icons', '@radix-ui/react-label', '@radix-ui/react-popover', '@radix-ui/react-separator', '@radix-ui/react-slot', '@radix-ui/react-switch', '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-toggle', '@radix-ui/react-tooltip', '@radix-ui/react-select', '@radix-ui/react-checkbox', 'react-colorful', 'scroll-into-view-if-needed', 'tippy.js', 'lucide-react', 'prosemirror-docx', 're-resizable', '@radix-ui/react-dialog', 'react-image-crop', 'mermaid', 'easydrawer', 'frimousse'],
       },
     },
   }
