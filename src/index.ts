@@ -6,3 +6,5 @@ export type { UseEditorStateReturn } from '@/hooks/useEditorState';
 export { useEditorState };
 export { BubbleMenu } from '@tiptap/react';
 export type { Editor, UseEditorOptions } from '@tiptap/react';
+export { ActionButton } from './components/ActionButton';
+export type { ActionButtonProps } from './components/ActionButton';
