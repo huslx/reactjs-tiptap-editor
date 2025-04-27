@@ -12,6 +12,8 @@ export interface BubbleMenuTextProps {
   editor: Editor
   disabled?: boolean
   items?: string[]
+  filterItem?: (item: any, editor: Editor) =>  boolean
+  showShow?: (props: ShouldShowProps) => boolean
 }
 
 const tippyOptions = {
@@ -56,13 +58,13 @@ function BubbleMenuText(props: BubbleMenuTextProps) {
       return [];
     }
 
-    return getBubbleText(props.editor, t, props.items);
+    return getBubbleText(props.editor, t, props.items).filter(f => props.filterItem ? props.filterItem(f, props.editor) : true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.disabled, props.editor, props.items, lang, t]);
+  }, [props.disabled, props.editor, props.items, props.filterItem, lang, t]);
 
   return (
     <BubbleMenu editor={props?.editor}
-      shouldShow={shouldShow}
+      shouldShow={props.showShow ?? shouldShow}
       tippyOptions={tippyOptions as any}
     >
       {items?.length

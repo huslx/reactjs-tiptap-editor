@@ -167,6 +167,8 @@ export interface BubbleMenuProps {
      */
     hidden?: boolean
     items?: string[]
+    filterItem?: (item: any, editor: Editor) => boolean
+    showShow?: (props: ShouldShowProps) => boolean
   }
   imageConfig?: {
     /**
